@@ -1,0 +1,174 @@
+/* ================= PAGE ================= */
+
+.admin-container {
+  padding: 25px;
+  background: #f4f6fb;
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ================= HEADER ================= */
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.admin-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #222;
+}
+
+.admin-header button {
+  background: #4f46e5;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.admin-header button:hover {
+  background: #4338ca;
+}
+
+/* ================= CARDS ================= */
+
+.admin-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.card {
+  padding: 18px;
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card h3 {
+  font-size: 22px;
+}
+
+.card.total { background: #6366f1; }
+.card.pending { background: #f59e0b; }
+.card.progress { background: #3b82f6; }
+.card.resolved { background: #10b981; }
+
+/* ================= FILTER ================= */
+
+.admin-filter {
+  margin-bottom: 20px;
+}
+
+.admin-filter select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+  cursor: pointer;
+}
+
+/* ================= TABLE ================= */
+
+.admin-table {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+/* HEADER */
+
+.table-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 1fr;
+  padding: 14px;
+  background: #4f46e5;
+  color: white;
+  font-weight: 600;
+}
+
+/* ROW */
+
+.table-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 1fr;
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.table-row:hover {
+  background: #f9fafb;
+}
+
+/* TEXT */
+
+.desc {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* STATUS SELECT */
+
+.status-select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background: #f9fafb;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.status-select:hover {
+  border-color: #4f46e5;
+}
+
+/* ================= LOADING ================= */
+
+.admin-container p {
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+}
+.status-select.pending {
+  background: #fef3c7;
+}
+
+.status-select.in-progress {
+  background: #dbeafe;
+}
+
+.status-select.resolved {
+  background: #dcfce7;
+}
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+  .table-head,
+  .table-row {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 10px;
+  }
+
+  .admin-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}

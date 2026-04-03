@@ -1,0 +1,121 @@
+.sidebar {
+
+    width: 250px;
+
+    background:
+
+        linear-gradient(180deg,
+            #312e81,
+            #1e1b4b);
+
+    color: white;
+
+    padding: 30px 22px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-height: 100vh;
+
+    box-shadow:
+
+        4px 0 20px rgba(0, 0, 0, .2);
+
+}
+
+
+/* LOGO */
+
+.sidebar-logo {
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    margin-bottom: 45px;
+
+    cursor: pointer;
+
+    letter-spacing: .5px;
+
+    transition: .3s;
+
+}
+
+.sidebar-logo:hover {
+
+    transform: scale(1.05);
+
+}
+
+
+/* LIST */
+
+.sidebar ul {
+
+    list-style: none;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+}
+
+
+/* ITEM */
+
+.sidebar li {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 13px 15px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    font-weight: 500;
+
+}
+
+
+/* ICON */
+
+.sidebar li svg {
+
+    font-size: 16px;
+
+}
+
+.sidebar ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.sidebar ul li svg {
+    font-size: 16px;
+}
+
+/* HOVER */
+
+.sidebar li:hover {
+
+    background:
+
+        rgba(255, 255, 255, .15);
+
+    transform: translateX(4px);
+
+}
+

@@ -1,0 +1,307 @@
+/* ===============================
+   PAGE BACKGROUND
+================================ */
+
+.addasset-wrapper {
+
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px;
+
+  background:
+    linear-gradient(135deg,
+      #4f46e5,
+      #312e81);
+
+  font-family: "Roboto", sans-serif;
+
+  position: relative;
+
+  overflow: hidden;
+
+}
+
+
+/* FLOATING BACKGROUND SHAPES */
+
+.addasset-wrapper::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  background: white;
+
+  opacity: .07;
+
+  border-radius: 50%;
+
+  top: -200px;
+  left: -200px;
+
+  filter: blur(120px);
+
+}
+
+.addasset-wrapper::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 400px;
+  height: 400px;
+
+  background: white;
+
+  opacity: .07;
+
+  border-radius: 50%;
+
+  bottom: -150px;
+  right: -150px;
+
+  filter: blur(120px);
+
+}
+
+
+/* ===============================
+   CARD
+================================ */
+
+.addasset-card {
+
+  width: 460px;
+
+  max-width: 95%;
+
+  background:
+
+    rgba(255, 255, 255, .15);
+
+  backdrop-filter: blur(18px);
+
+  -webkit-backdrop-filter: blur(18px);
+
+  padding: 50px 45px;
+
+  border-radius: 22px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  box-shadow:
+
+    0 40px 80px rgba(0, 0, 0, .35);
+
+  border:
+
+    1px solid rgba(255, 255, 255, .2);
+
+  animation: fadeIn .6s ease;
+
+  z-index: 2;
+
+}
+
+
+/* TITLE */
+
+.addasset-card h2 {
+
+  color: white;
+
+  text-align: center;
+
+  font-size: 28px;
+
+  font-weight: 700;
+
+  margin-bottom: 35px;
+
+  letter-spacing: .5px;
+
+}
+
+
+/* ===============================
+   LABEL
+================================ */
+
+.addasset-card label {
+
+  color: white;
+
+  font-size: 13px;
+
+  margin-bottom: 6px;
+
+  opacity: .9;
+
+}
+
+
+/* ===============================
+   INPUTS
+================================ */
+
+.addasset-card input,
+
+.addasset-card select {
+
+  width: 100%;
+
+  padding: 14px;
+
+  margin-bottom: 18px;
+
+  border-radius: 12px;
+
+  border: none;
+
+  outline: none;
+
+  font-size: 14px;
+
+  background: white;
+
+  color: #333;
+
+  transition: .25s ease;
+
+}
+
+
+/* INPUT FOCUS */
+
+.addasset-card input:focus,
+
+.addasset-card select:focus {
+
+  box-shadow:
+
+    0 0 0 3px rgba(79, 70, 229, .3);
+
+  transform: translateY(-1px);
+
+}
+
+
+/* ===============================
+   BUTTON
+================================ */
+
+.addasset-card button {
+
+  margin-top: 10px;
+
+  padding: 15px;
+
+  border-radius: 14px;
+
+  border: none;
+
+  font-weight: 700;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  background:
+
+    linear-gradient(135deg,
+      white,
+      #e0e7ff);
+
+  color: #4f46e5;
+
+  transition: .3s ease;
+
+  letter-spacing: .5px;
+
+}
+
+
+/* HOVER */
+
+.addasset-card button:hover {
+
+  transform:
+
+    translateY(-3px);
+
+  box-shadow:
+
+    0 18px 35px rgba(0, 0, 0, .35);
+
+}
+
+
+/* ===============================
+   PLACEHOLDER
+================================ */
+
+.addasset-card input::placeholder {
+
+  color: #888;
+
+}
+
+
+/* ===============================
+   ANIMATION
+================================ */
+
+@keyframes fadeIn {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+
+      translateY(25px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+
+      translateY(0);
+
+  }
+
+}
+
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media(max-width:600px) {
+
+  .addasset-card {
+
+    padding: 40px 25px;
+
+  }
+
+  .addasset-card h2 {
+
+    font-size: 24px;
+
+  }
+
+}

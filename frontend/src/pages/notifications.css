@@ -1,0 +1,319 @@
+/* ===============================
+PAGE TITLE
+=============================== */
+
+.notification-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:24px;
+  font-weight:600;
+  margin-bottom:25px;
+  color:#111827;
+}
+
+
+/* ===============================
+GROUP TITLE
+=============================== */
+
+.group-title{
+  margin-top:25px;
+  margin-bottom:10px;
+  font-size:15px;
+  font-weight:600;
+  color:#6b7280;
+}
+
+
+/* ===============================
+NOTIFICATION CARD
+=============================== */
+
+.notification-card{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px;
+  margin-bottom:14px;
+  border-radius:12px;
+  background:white;
+  box-shadow:0 6px 16px rgba(0,0,0,0.06);
+  transition:all 0.25s ease;
+  cursor:pointer;
+  position:relative;
+}
+
+.notification-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 24px rgba(0,0,0,0.12);
+}
+
+
+/* ===============================
+UNREAD STYLE
+=============================== */
+
+.notification-card.unread{
+  border-left:4px solid #4f46e5;
+  background:#f5f7ff;
+}
+
+.notification-card.unread::after{
+  content:"";
+  width:8px;
+  height:8px;
+  background:#4f46e5;
+  border-radius:50%;
+  position:absolute;
+  right:14px;
+  top:14px;
+}
+
+
+/* ===============================
+LEFT CONTENT
+=============================== */
+
+.notification-left{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex:1;
+}
+
+.icon{
+  width:42px;
+  height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  border-radius:50%;
+  background:#eef2ff;
+  color:#4f46e5;
+}
+
+.notification-left p{
+  font-size:15px;
+  font-weight:500;
+  margin:0;
+  color:#111827;
+}
+
+.notification-left span{
+  font-size:12px;
+  color:#6b7280;
+}
+
+
+/* ===============================
+DELETE BUTTON
+=============================== */
+
+.delete-btn{
+  background:#ef4444;
+  color:white;
+  border:none;
+  padding:7px 10px;
+  border-radius:6px;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.delete-btn:hover{
+  background:#dc2626;
+}
+
+
+/* ===============================
+EMPTY STATE
+=============================== */
+
+.empty{
+  text-align:center;
+  padding:40px;
+  color:#6b7280;
+  background:white;
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+
+
+/* ===============================
+MODAL BACKGROUND
+=============================== */
+
+.notification-modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.45);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+  animation:fadeIn 0.2s ease;
+}
+
+
+/* ===============================
+MODAL CARD
+=============================== */
+
+.notification-modal-card{
+  background:white;
+  padding:30px;
+  border-radius:14px;
+  width:420px;
+  text-align:left;
+  box-shadow:0 14px 40px rgba(0,0,0,0.2);
+  animation:slideUp 0.25s ease;
+}
+
+.detail-title{
+  font-size:20px;
+  margin-bottom:20px;
+  color:#111827;
+}
+
+
+/* ===============================
+DETAIL ROW
+=============================== */
+
+.detail-row{
+  margin-bottom:14px;
+}
+
+.detail-row strong{
+  display:block;
+  font-size:13px;
+  color:#6b7280;
+  margin-bottom:4px;
+}
+
+.detail-row span{
+  font-size:14px;
+}
+
+.detail-row p{
+  margin:0;
+  font-size:15px;
+}
+
+
+/* ===============================
+TYPE BADGE
+=============================== */
+
+.type-badge{
+  background:#4f46e5;
+  color:white;
+  padding:4px 10px;
+  border-radius:6px;
+  font-size:12px;
+}
+
+
+/* ===============================
+STATUS BADGES
+=============================== */
+
+.status-read{
+  color:#16a34a;
+  font-weight:500;
+}
+
+.status-unread{
+  color:#ef4444;
+  font-weight:500;
+}
+
+
+/* ===============================
+MODAL ACTIONS
+=============================== */
+
+.modal-actions{
+  margin-top:20px;
+  display:flex;
+  justify-content:space-between;
+}
+
+
+/* VIEW BUTTON */
+
+.view-btn{
+  background:#10b981;
+  color:white;
+  border:none;
+  padding:8px 16px;
+  border-radius:6px;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.view-btn:hover{
+  background:#059669;
+}
+
+
+/* CLOSE BUTTON */
+
+.close-btn{
+  background:#4f46e5;
+  color:white;
+  border:none;
+  padding:8px 16px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.close-btn:hover{
+  background:#4338ca;
+}
+
+
+/* ===============================
+ANIMATIONS
+=============================== */
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+@keyframes slideUp{
+  from{
+    transform:translateY(20px);
+    opacity:0;
+  }
+  to{
+    transform:translateY(0);
+    opacity:1;
+  }
+}
+
+
+/* ===============================
+RESPONSIVE
+=============================== */
+
+@media(max-width:600px){
+
+.notification-modal-card{
+  width:90%;
+}
+
+.notification-card{
+  padding:14px;
+}
+
+.notification-left p{
+  font-size:14px;
+}
+
+}

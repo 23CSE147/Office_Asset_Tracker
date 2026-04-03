@@ -1,0 +1,57 @@
+/* .about {
+  padding: 100px 90px;
+  text-align: center;
+  background: #f5f7ff;
+}
+
+.about h2 {
+  margin-bottom: 30px;
+  color: #3730a3;
+}
+
+.contact {
+  padding: 100px 90px;
+  text-align: center;
+  background: white;
+}
+
+.contact h2 {
+  margin-bottom: 30px;
+  color: #3730a3;
+} */
+
+
+
+
+
+
+
+
+/* Main Home Wrapper */
+.home-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main Content Area */
+.home-content {
+  flex: 1;
+  width: 100%;
+}
+
+/* Section Spacing (if needed globally) */
+section {
+  width: 100%;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent Horizontal Scroll */
+body {
+  overflow-x: hidden;
+}

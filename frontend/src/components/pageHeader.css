@@ -1,0 +1,90 @@
+/* =========================
+FIXED HEADER (MATCHED UI)
+========================= */
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 16px 20px;
+
+  /* ✅ FIX: light background instead of dark */
+  background: #ffffff;
+
+  border-radius: 12px;
+  margin-bottom: 20px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================
+BACK BUTTON
+========================= */
+
+.back-btn {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  border: none;
+
+  background: #eef2ff; /* soft indigo */
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.back-btn:hover {
+  background: #4f46e5;
+  transform: scale(1.05);
+}
+
+.back-btn svg {
+  color: #4f46e5;
+  font-size: 14px;
+}
+
+.back-btn:hover svg {
+  color: white;
+}
+
+/* =========================
+TITLE
+========================= */
+
+.page-title {
+  font-size: 22px;
+  font-weight: 600;
+
+  /* ✅ FIX: dark text */
+  color: #1e293b;
+
+  margin: 0;
+}
+/* =========================
+   DARK MODE (AUTO SUPPORT)
+========================= */
+
+@media (prefers-color-scheme: dark) {
+  .page-header {
+    background: #1e293b;
+    box-shadow: none;
+  }
+
+  .page-title {
+    color: #f1f5f9;
+  }
+
+  .back-btn {
+    background: linear-gradient(145deg, #334155, #1e293b);
+  }
+
+  .back-btn svg {
+    color: #f1f5f9;
+  }
+}
