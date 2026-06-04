@@ -415,3 +415,416 @@
   padding: 8px;
   border-bottom: 1px solid #eee;
 }
+/* =====================================
+   LARGE LAPTOPS
+===================================== */
+
+@media (max-width: 1400px) {
+
+  .dashboard-main {
+
+    padding: 40px;
+  }
+
+  .dashboard-grid {
+
+    grid-template-columns:
+      repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+/* =====================================
+   TABLETS
+===================================== */
+
+@media (max-width: 1024px) {
+
+  .dashboard-container {
+
+    flex-direction: column;
+  }
+
+  /* SIDEBAR */
+
+  .sidebar {
+
+    width: 100%;
+
+    flex-direction: row;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 18px 22px;
+  }
+
+  .sidebar ul {
+
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+  }
+
+  .sidebar li {
+
+    margin-bottom: 0;
+  }
+
+  /* MAIN */
+
+  .dashboard-main {
+
+    padding: 30px 24px;
+  }
+
+  /* HEADER */
+
+  .dashboard-header {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 20px;
+  }
+
+  .header-actions {
+
+    width: 100%;
+
+    flex-wrap: wrap;
+  }
+
+  /* GRID */
+
+  .dashboard-grid {
+
+    grid-template-columns:
+      repeat(auto-fit, minmax(230px, 1fr));
+
+    gap: 20px;
+  }
+
+  /* STATS */
+
+  .stats-grid {
+
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .chart-box {
+
+    width: 100%;
+  }
+}
+
+/* =====================================
+   MOBILE DEVICES
+===================================== */
+
+@media (max-width: 768px) {
+
+  .dashboard-main {
+
+    padding: 18px;
+  }
+
+  /* SIDEBAR */
+
+  .sidebar {
+
+    padding: 14px 16px;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+  }
+
+  .sidebar::-webkit-scrollbar {
+
+    display: none;
+  }
+
+  .sidelogo {
+
+    font-size: 18px;
+
+    margin-bottom: 0;
+  }
+
+  .sidebar ul {
+
+    gap: 8px;
+  }
+
+  .sidebar li {
+
+    padding: 10px 14px;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+  }
+
+  /* HEADER */
+
+  .dashboard-header {
+
+    margin-bottom: 24px;
+  }
+
+  .dashboard-header h2 {
+
+    font-size: 24px;
+
+    line-height: 1.3;
+  }
+
+  .role-badge {
+
+    font-size: 12px;
+
+    padding: 5px 10px;
+  }
+
+  /* ACTION BUTTONS */
+
+  .header-actions {
+
+    width: 100%;
+
+    justify-content: flex-start;
+
+    gap: 10px;
+  }
+
+  .home-btn,
+  .logout-btn {
+
+    height: 42px;
+
+    padding: 0 16px;
+
+    font-size: 13px;
+
+    border-radius: 12px;
+  }
+
+  /* NOTIFICATION */
+
+  .notification-btn {
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+  }
+
+  .notification-count {
+
+    font-size: 10px;
+
+    padding: 2px 5px;
+  }
+
+  /* GRID */
+
+  .dashboard-grid {
+
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  /* CARD */
+
+  .dashboard-card {
+
+    padding: 24px 20px;
+
+    border-radius: 20px;
+  }
+
+  .dashboard-card svg {
+
+    font-size: 26px;
+  }
+
+  .dashboard-card h3 {
+
+    font-size: 20px;
+  }
+
+  .dashboard-card p {
+
+    font-size: 13px;
+  }
+
+  /* STATS */
+
+  .stats-grid {
+
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+  }
+
+  .stat-card {
+
+    padding: 18px;
+  }
+
+  .stat-card p {
+
+    font-size: 24px;
+  }
+
+  /* ALERT */
+
+  .alert-box {
+
+    padding: 16px;
+  }
+
+  .alert-box h3 {
+
+    font-size: 16px;
+  }
+
+  /* CHART */
+
+  .chart-box {
+
+    padding: 20px;
+
+    border-radius: 18px;
+  }
+}
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media (max-width: 480px) {
+
+  .dashboard-main {
+
+    padding: 14px;
+  }
+
+  /* HEADER */
+
+  .dashboard-header h2 {
+
+    font-size: 20px;
+  }
+
+  .role-badge {
+
+    font-size: 11px;
+  }
+
+  /* BUTTONS */
+
+  .home-btn,
+  .logout-btn {
+
+    height: 40px;
+
+    padding: 0 14px;
+
+    font-size: 12px;
+
+    gap: 6px;
+  }
+
+  .notification-btn {
+
+    width: 40px;
+    height: 40px;
+
+    font-size: 16px;
+  }
+
+  /* CARD */
+
+  .dashboard-card {
+
+    padding: 20px 16px;
+  }
+
+  .dashboard-card h3 {
+
+    font-size: 18px;
+  }
+
+  .dashboard-card p {
+
+    font-size: 12px;
+  }
+
+  .dashboard-card svg {
+
+    font-size: 24px;
+  }
+
+  /* SIDEBAR */
+
+  .sidebar {
+
+    padding: 12px 14px;
+  }
+
+  .sidebar li {
+
+    padding: 8px 12px;
+
+    font-size: 12px;
+  }
+}
+
+/* =====================================
+   EXTRA SMALL DEVICES
+===================================== */
+
+@media (max-width: 360px) {
+
+  .dashboard-header h2 {
+
+    font-size: 18px;
+  }
+
+  .home-btn,
+  .logout-btn {
+
+    font-size: 11px;
+
+    padding: 0 12px;
+  }
+
+  .dashboard-card {
+
+    padding: 18px 14px;
+  }
+
+  .dashboard-card h3 {
+
+    font-size: 16px;
+  }
+
+  .dashboard-card p {
+
+    font-size: 11px;
+  }
+}

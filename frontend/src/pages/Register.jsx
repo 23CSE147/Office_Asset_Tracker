@@ -15,7 +15,32 @@
 
 //   const navigate = useNavigate();
 
-//   // Password validation
+//   /*
+//   ===============================
+//   TOAST CONFIG (TOP RIGHT POPUP)
+//   ===============================
+//   */
+
+//   const Toast = Swal.mixin({
+//     toast: true,
+//     position: "top-end",
+//     showConfirmButton: false,
+//     timer: 3000,
+//     timerProgressBar: true,
+//     background: "#ffffff",
+//     color: "#111827",
+//     didOpen: (toast) => {
+//       toast.onmouseenter = Swal.stopTimer;
+//       toast.onmouseleave = Swal.resumeTimer;
+//     },
+//   });
+
+//   /*
+//   ===============================
+//   PASSWORD VALIDATION
+//   ===============================
+//   */
+
 //   const validatePassword = (password) => {
 //     const errors = [];
 
@@ -37,8 +62,22 @@
 //     return errors;
 //   };
 
+//   /*
+//   ===============================
+//   REGISTER FUNCTION
+//   ===============================
+//   */
+
 //   const handleRegister = async (e) => {
 //     e.preventDefault();
+
+//     if (!name || !email || !password) {
+//       Toast.fire({
+//         icon: "warning",
+//         title: "Please fill all fields",
+//       });
+//       return;
+//     }
 
 //     const passwordErrors = validatePassword(password);
 
@@ -47,17 +86,9 @@
 //     }
 
 //     if (passwordErrors.length > 0) {
-//       Swal.fire({
+//       Toast.fire({
 //         icon: "error",
-//         title: "Password Requirements",
-//         html: `
-//           <div style="text-align:left;">
-//             ${passwordErrors
-//               .map((err) => `<p style="margin:6px 0;">• ${err}</p>`)
-//               .join("")}
-//           </div>
-//         `,
-//         confirmButtonColor: "#4f46e5",
+//         title: passwordErrors[0],
 //       });
 //       return;
 //     }
@@ -72,21 +103,21 @@
 //         role: "employee",
 //       });
 
-//       Swal.fire({
+//       Toast.fire({
 //         icon: "success",
-//         title: "Registration Successful 🎉",
-//         text: "Your account has been created successfully!",
-//         confirmButtonColor: "#4f46e5",
-//       }).then(() => {
-//         navigate("/login");
+//         title: "Registration Successful",
 //       });
+
+//       setTimeout(() => {
+//         navigate("/login");
+//       }, 1200);
+
 //     } catch (error) {
-//       Swal.fire({
+//       Toast.fire({
 //         icon: "error",
-//         title: "Registration Failed",
-//         text:
-//           error.response?.data?.message || "Something went wrong",
-//         confirmButtonColor: "#4f46e5",
+//         title:
+//           error.response?.data?.message ||
+//           "Registration Failed",
 //       });
 //     } finally {
 //       setLoading(false);
@@ -100,12 +131,16 @@
 
 //       <form className="register-card" onSubmit={handleRegister}>
 //         <h2>Create Account</h2>
+
 //         <p className="subtitle">
 //           Register to manage office assets
 //         </p>
 
+//         {/* NAME */}
+
 //         <div className="input-group">
 //           <FaUser className="input-icon" />
+
 //           <input
 //             type="text"
 //             placeholder="Full Name"
@@ -115,8 +150,11 @@
 //           />
 //         </div>
 
+//         {/* EMAIL */}
+
 //         <div className="input-group">
 //           <FaEnvelope className="input-icon" />
+
 //           <input
 //             type="email"
 //             placeholder="Email Address"
@@ -126,8 +164,11 @@
 //           />
 //         </div>
 
+//         {/* PASSWORD */}
+
 //         <div className="input-group">
 //           <FaLock className="input-icon" />
+
 //           <input
 //             type={showPassword ? "text" : "password"}
 //             placeholder="Password"
@@ -135,6 +176,7 @@
 //             onChange={(e) => setPassword(e.target.value)}
 //             required
 //           />
+
 //           <span
 //             className="toggle-password"
 //             onClick={() => setShowPassword(!showPassword)}
@@ -143,8 +185,11 @@
 //           </span>
 //         </div>
 
+//         {/* CONFIRM PASSWORD */}
+
 //         <div className="input-group">
 //           <FaLock className="input-icon" />
+
 //           <input
 //             type="password"
 //             placeholder="Confirm Password"
@@ -156,9 +201,13 @@
 //           />
 //         </div>
 
+//         {/* BUTTON */}
+
 //         <button type="submit" disabled={loading}>
 //           {loading ? "Registering..." : "Register"}
 //         </button>
+
+//         {/* LOGIN LINK */}
 
 //         <p className="login-link">
 //           Already have an account?
@@ -176,12 +225,16 @@
 
 
 
+
+
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
-import Swal from "sweetalert2";
 import "./register.css";
+
+// ✅ TOASTIFY
+import { toast } from "react-toastify";
 
 function Register() {
   const [name, setName] = useState("");
@@ -192,26 +245,6 @@ function Register() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-
-  /*
-  ===============================
-  TOAST CONFIG (TOP RIGHT POPUP)
-  ===============================
-  */
-
-  const Toast = Swal.mixin({
-    toast: true,
-    position: "top-end",
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    background: "#ffffff",
-    color: "#111827",
-    didOpen: (toast) => {
-      toast.onmouseenter = Swal.stopTimer;
-      toast.onmouseleave = Swal.resumeTimer;
-    },
-  });
 
   /*
   ===============================
@@ -250,10 +283,7 @@ function Register() {
     e.preventDefault();
 
     if (!name || !email || !password) {
-      Toast.fire({
-        icon: "warning",
-        title: "Please fill all fields",
-      });
+      toast.warning("Please fill all fields ⚠️");
       return;
     }
 
@@ -264,10 +294,7 @@ function Register() {
     }
 
     if (passwordErrors.length > 0) {
-      Toast.fire({
-        icon: "error",
-        title: passwordErrors[0],
-      });
+      toast.error(passwordErrors[0] + " ❌");
       return;
     }
 
@@ -281,22 +308,17 @@ function Register() {
         role: "employee",
       });
 
-      Toast.fire({
-        icon: "success",
-        title: "Registration Successful",
-      });
+      // ✅ SUCCESS
+      toast.success("Registration Successful ✅");
 
       setTimeout(() => {
         navigate("/login");
       }, 1200);
 
     } catch (error) {
-      Toast.fire({
-        icon: "error",
-        title:
-          error.response?.data?.message ||
-          "Registration Failed",
-      });
+      toast.error(
+        error.response?.data?.message || "Registration Failed ❌"
+      );
     } finally {
       setLoading(false);
     }
@@ -310,15 +332,13 @@ function Register() {
       <form className="register-card" onSubmit={handleRegister}>
         <h2>Create Account</h2>
 
-        <p className="subtitle">
+        <p className="subtitle-r">
           Register to manage office assets
         </p>
 
         {/* NAME */}
-
         <div className="input-group">
           <FaUser className="input-icon" />
-
           <input
             type="text"
             placeholder="Full Name"
@@ -329,10 +349,8 @@ function Register() {
         </div>
 
         {/* EMAIL */}
-
         <div className="input-group">
           <FaEnvelope className="input-icon" />
-
           <input
             type="email"
             placeholder="Email Address"
@@ -343,10 +361,8 @@ function Register() {
         </div>
 
         {/* PASSWORD */}
-
         <div className="input-group">
           <FaLock className="input-icon" />
-
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Password"
@@ -364,10 +380,8 @@ function Register() {
         </div>
 
         {/* CONFIRM PASSWORD */}
-
         <div className="input-group">
           <FaLock className="input-icon" />
-
           <input
             type="password"
             placeholder="Confirm Password"
@@ -380,13 +394,11 @@ function Register() {
         </div>
 
         {/* BUTTON */}
-
         <button type="submit" disabled={loading}>
           {loading ? "Registering..." : "Register"}
         </button>
 
         {/* LOGIN LINK */}
-
         <p className="login-link">
           Already have an account?
           <Link to="/login"> Login</Link>

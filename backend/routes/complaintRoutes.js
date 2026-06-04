@@ -9,9 +9,10 @@ const {
   getAllComplaints,
   updateComplaintStatus,
 } = require("../controllers/complaintController");
+const upload = require("../middleware/upload");
 
 // USER
-router.post("/", authMiddleware, createComplaint);
+router.post("/", authMiddleware, upload.single("image"), createComplaint);
 router.get("/my", authMiddleware, getMyComplaints);
 
 // ADMIN

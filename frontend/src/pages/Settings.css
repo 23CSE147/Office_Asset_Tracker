@@ -1,0 +1,121 @@
+/* =========================
+   PAGE
+========================= */
+
+.settings-page {
+
+  min-height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  padding: 40px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #1e1b4b,
+      #312e81
+    );
+
+  font-family: "Poppins", sans-serif;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.settings-card {
+
+  width: 500px;
+
+  max-width: 92%;
+
+  background: white;
+
+  border-radius: 28px;
+
+  padding: 40px;
+
+  box-shadow:
+    0 30px 60px rgba(0,0,0,.25);
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 22px;
+}
+
+/* TITLE */
+
+.settings-card h2 {
+
+  text-align: center;
+
+  color: #111827;
+
+  font-size: 32px;
+}
+
+/* ITEM */
+
+.setting-item {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 18px;
+
+  border-radius: 16px;
+
+  background: #f8fafc;
+}
+
+/* TEXT */
+
+.setting-item h4 {
+
+  color: #111827;
+
+  margin-bottom: 5px;
+}
+
+.setting-item p {
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+/* BUTTON */
+
+.setting-item button {
+
+  height: 44px;
+
+  padding: 0 18px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4f46e5,
+      #6366f1
+    );
+
+  color: white;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}

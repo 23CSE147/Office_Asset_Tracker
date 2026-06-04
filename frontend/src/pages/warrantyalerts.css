@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 
 .warranty-container{
@@ -63,4 +63,923 @@ padding:40px;
 border-radius:10px;
 text-align:center;
 box-shadow:0 5px 15px rgba(0,0,0,0.05);
+} */
+
+
+
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/* =========================
+LAYOUT
+========================= */
+
+.warranty-container {
+
+  display: flex;
+
+  font-family: "Poppins", sans-serif;
+
+}
+
+.warranty-main {
+
+  flex: 1;
+
+  padding: 35px;
+
+  background: #f4f7fb;
+
+  min-height: 100vh;
+
+}
+
+/* =========================
+PAGE HEADER SECTION
+========================= */
+
+
+
+.header-left {
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+    padding: 10px 16px;
+}
+
+.header-badge {
+
+  background: #eef2ff;
+
+  color: #4338ca;
+
+  padding: 8px 16px;
+
+  border-radius: 30px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+}
+
+/* =========================
+REFRESH BUTTON
+========================= */
+
+.refresh-btn {
+
+  height: 48px;
+
+  padding: 0 22px;
+
+  border: none;
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4f46e5,
+      #6366f1
+    );
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .3s ease;
+
+  box-shadow:
+    0 10px 25px rgba(79,70,229,.18);
+
+}
+
+.refresh-btn:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 15px 30px rgba(79,70,229,.28);
+
+}
+
+/* =========================
+GRID
+========================= */
+
+.alert-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fill,minmax(280px,1fr));
+
+  gap: 22px;
+
+}
+
+/* =========================
+CARD
+========================= */
+
+.alert-card {
+
+  background: white;
+
+  padding: 24px;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.06);
+
+  transition: .3s ease;
+
+  border: 1px solid #eef2f7;
+
+}
+
+.alert-card:hover {
+
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.08);
+
+}
+
+.alert-card h3 {
+
+  margin-bottom: 14px;
+
+  color: #111827;
+
+  font-size: 20px;
+  font-weight: 700;
+
+}
+
+.alert-card p {
+
+  margin-bottom: 10px;
+
+  color: #4b5563;
+
+  font-size: 14px;
+
+}
+
+/* =========================
+BADGES
+========================= */
+
+.badge {
+
+  margin-top: 12px;
+
+  display: inline-block;
+
+  padding: 8px 14px;
+
+  border-radius: 30px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+}
+
+.badge.warning {
+
+  background: #fef3c7;
+
+  color: #92400e;
+
+}
+
+.badge.danger {
+
+  background: #fee2e2;
+
+  color: #991b1b;
+
+}
+
+/* =========================
+NO ALERT
+========================= */
+
+.no-alert {
+
+  background: white;
+
+  padding: 60px 40px;
+
+  border-radius: 24px;
+
+  text-align: center;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.05);
+
+}
+
+.no-alert h3 {
+
+  color: #16a34a;
+
+  font-size: 24px;
+
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+  .warranty-main {
+
+    padding: 20px;
+
+  }
+
+  .page-header-section-warranty{
+
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+
+  }
+
+  .header-left {
+
+    flex-direction: column;
+    align-items: flex-start;
+
+  }
+
+  .refresh-btn {
+
+    width: 100%;
+
+  }
+
+}
+
+
+/* =========================
+REFRESH BUTTON TOP RIGHT
+========================= */
+
+.refresh-btn {
+
+  position: absolute;
+
+  top: 50px;
+  right: 50px;
+
+  height: 46px;
+
+  padding: 0 22px;
+
+  border: none;
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4f46e5,
+      #6366f1
+    );
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .3s ease;
+
+  box-shadow:
+    0 10px 25px rgba(79,70,229,.18);
+
+}
+
+.refresh-btn:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 15px 30px rgba(79,70,229,.28);
+
+}
+/* =========================================
+GLOBAL RESPONSIVE - WARRANTY ALERTS
+========================================= */
+
+/* LARGE LAPTOP */
+
+@media (max-width: 1400px) {
+
+  .warranty-main {
+
+    padding: 30px;
+  }
+
+  .alert-grid {
+
+    grid-template-columns:
+      repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  .refresh-btn {
+
+    top: 40px;
+    right: 40px;
+  }
+}
+
+/* =========================================
+TABLET
+========================================= */
+
+@media (max-width: 1024px) {
+
+  .warranty-container {
+
+    flex-direction: column;
+  }
+
+  .warranty-main {
+
+    width: 100%;
+
+    padding: 24px;
+  }
+
+  .page-header-section-warranty {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 18px;
+
+    margin-bottom: 24px;
+  }
+
+  .refresh-btn {
+
+    position: static;
+
+    width: fit-content;
+
+    height: 44px;
+
+    font-size: 14px;
+  }
+
+  .alert-grid {
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 18px;
+  }
+
+  .alert-card {
+
+    padding: 22px;
+  }
+}
+
+/* =========================================
+MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+  .warranty-main {
+
+    padding: 18px;
+  }
+
+  /* HEADER */
+
+  .page-header-section-warranty {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 14px;
+
+    margin-bottom: 20px;
+  }
+
+  .header-left {
+
+    width: 100%;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    padding: 0;
+  }
+
+  /* BUTTON */
+
+  .refresh-btn {
+
+    position: static;
+
+    width: 100%;
+
+    height: 46px;
+
+    border-radius: 14px;
+
+    font-size: 14px;
+
+    margin: 0;
+  }
+
+  /* GRID */
+
+  .alert-grid {
+
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+  }
+
+  /* CARD */
+
+  .alert-card {
+
+    padding: 20px;
+
+    border-radius: 18px;
+  }
+
+  .alert-card h3 {
+
+    font-size: 18px;
+  }
+
+  .alert-card p {
+
+    font-size: 13px;
+  }
+
+  /* BADGE */
+
+  .badge {
+
+    font-size: 12px;
+
+    padding: 7px 12px;
+  }
+
+  /* NO ALERT */
+
+  .no-alert {
+
+    padding: 40px 20px;
+
+    border-radius: 18px;
+  }
+
+  .no-alert h3 {
+
+    font-size: 20px;
+  }
+}
+
+/* =========================================
+SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+  .warranty-main {
+
+    padding: 14px;
+  }
+
+  .refresh-btn {
+
+    height: 44px;
+
+    font-size: 13px;
+  }
+
+  .alert-card {
+
+    padding: 18px;
+  }
+
+  .alert-card h3 {
+
+    font-size: 16px;
+  }
+
+  .alert-card p {
+
+    font-size: 12px;
+
+    line-height: 1.6;
+  }
+
+  .badge {
+
+    font-size: 11px;
+  }
+
+  .header-badge {
+
+    font-size: 12px;
+
+    padding: 7px 12px;
+  }
+
+  .no-alert {
+
+    padding: 35px 16px;
+  }
+
+  .no-alert h3 {
+
+    font-size: 18px;
+  }
+}
+
+/* =========================================
+EXTRA SMALL DEVICES
+========================================= */
+
+@media (max-width: 360px) {
+
+  .warranty-main {
+
+    padding: 12px;
+  }
+
+  .refresh-btn {
+
+    height: 42px;
+
+    font-size: 12px;
+  }
+
+  .alert-card {
+
+    padding: 16px;
+  }
+
+  .alert-card h3 {
+
+    font-size: 15px;
+  }
+
+  .alert-card p {
+
+    font-size: 11px;
+  }
+
+  .badge {
+
+    font-size: 10px;
+
+    padding: 6px 10px;
+  }
+
+  .no-alert h3 {
+
+    font-size: 16px;
+  }
+}
+/* =========================================
+WARRANTY HEADER PROFESSIONAL
+========================================= */
+
+.page-header-section-warranty {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 28px;
+}
+
+/* LEFT SIDE */
+
+.header-left {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  flex-wrap: wrap;
+}
+
+/* TITLE BOX */
+
+.warranty-title-box {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+}
+
+/* ICON */
+
+.title-icon {
+
+  width: 56px;
+
+  height: 56px;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4f46e5,
+      #6366f1
+    );
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: white;
+
+  font-size: 22px;
+
+  box-shadow:
+    0 12px 30px rgba(79,70,229,.22);
+}
+
+/* BADGE */
+
+.header-badge {
+
+  display: inline-block;
+
+  margin-top: 4px;
+
+  padding: 7px 14px;
+
+  border-radius: 30px;
+
+  background: #eef2ff;
+
+  color: #4338ca;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+/* REFRESH BUTTON */
+
+.refresh-btn {
+
+  height: 46px;
+
+  padding: 0 20px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4f46e5,
+      #6366f1
+    );
+
+  color: white;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .3s ease;
+
+  box-shadow:
+    0 10px 25px rgba(79,70,229,.18);
+}
+
+.refresh-btn svg {
+
+  font-size: 14px;
+}
+
+.refresh-btn:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 15px 30px rgba(79,70,229,.28);
+}
+
+/* =========================================
+TABLET
+========================================= */
+
+@media (max-width: 768px) {
+
+  .header-left {
+
+    width: 100%;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 14px;
+  }
+
+  .warranty-title-box {
+
+    width: 100%;
+  }
+
+  .refresh-btn {
+
+    width: 100%;
+  }
+}
+
+/* =========================================
+MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+  .title-icon {
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 14px;
+
+    font-size: 18px;
+  }
+
+  .header-badge {
+
+    font-size: 11px;
+  }
+
+  .refresh-btn {
+
+    height: 44px;
+
+    font-size: 13px;
+  }
+}
+/* =========================================
+HEADER ALIGNMENT
+========================================= */
+
+.page-header-section-warranty {
+
+  margin-bottom: 28px;
+}
+
+/* LEFT SECTION */
+
+.warranty-header-left {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  flex-wrap: wrap;
+}
+
+/* =========================================
+REFRESH BUTTON
+========================================= */
+
+.refresh-btn {
+
+  height: 42px;
+
+  padding: 0 18px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4f46e5,
+      #6366f1
+    );
+
+  color: white;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .3s ease;
+
+  box-shadow:
+    0 10px 25px rgba(79,70,229,.18);
+}
+
+/* ICON */
+
+.refresh-icon {
+
+  font-size: 13px;
+
+  transition: .4s ease;
+}
+
+/* HOVER */
+
+.refresh-btn:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 15px 30px rgba(79,70,229,.28);
+}
+
+.refresh-btn:hover .refresh-icon {
+
+  transform: rotate(180deg);
+}
+
+/* =========================================
+MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+  .warranty-header-left {
+
+    width: 100%;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 12px;
+  }
+
+  .refresh-btn {
+
+    width: 100%;
+  }
 }

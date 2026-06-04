@@ -1,5 +1,5 @@
 /* =========================
-FIXED HEADER (MATCHED UI)
+   PREMIUM HEADER
 ========================= */
 
 .page-header {
@@ -7,24 +7,31 @@ FIXED HEADER (MATCHED UI)
   align-items: center;
   gap: 14px;
 
-  padding: 16px 20px;
+  padding: 16px 22px;
 
-  /* ✅ FIX: light background instead of dark */
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
-  border-radius: 12px;
-  margin-bottom: 20px;
+  border-radius: 14px;
+  margin-bottom: 22px;
 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+
+  border: 1px solid rgba(255,255,255,0.3);
+
+  transition: 0.3s ease;
 }
 
 /* =========================
-BACK BUTTON
+   BACK BUTTON
 ========================= */
 
 .back-btn {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
 
   display: flex;
   align-items: center;
@@ -33,47 +40,106 @@ BACK BUTTON
   border-radius: 50%;
   border: none;
 
-  background: #eef2ff; /* soft indigo */
+  background: linear-gradient(135deg, #eef2ff, #e0e7ff);
 
   cursor: pointer;
-  transition: 0.2s;
+  position: relative;
+  overflow: hidden;
+
+  transition: 0.3s ease;
 }
 
-.back-btn:hover {
-  background: #4f46e5;
-  transform: scale(1.05);
-}
+/* ICON */
 
 .back-btn svg {
   color: #4f46e5;
   font-size: 14px;
+  transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+
+.back-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(79,70,229,0.3);
+  background: linear-gradient(135deg, #4f46e5, #4338ca);
 }
 
 .back-btn:hover svg {
   color: white;
 }
 
+/* CLICK EFFECT */
+
+.back-btn:active {
+  transform: scale(0.92);
+}
+
+/* SHINE EFFECT */
+
+.back-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.6),
+    transparent
+  );
+
+  transition: 0.5s;
+}
+
+.back-btn:hover::after {
+  left: 100%;
+}
+
 /* =========================
-TITLE
+   TITLE
 ========================= */
 
 .page-title {
   font-size: 22px;
-  font-weight: 600;
+  font-weight: 700;
 
-  /* ✅ FIX: dark text */
-  color: #1e293b;
+  color: #111827;
 
-  margin: 0;
+  letter-spacing: 0.3px;
 }
+
 /* =========================
-   DARK MODE (AUTO SUPPORT)
+   SUBTLE ANIMATION
+========================= */
+
+.page-header {
+  animation: fadeSlide 0.4s ease;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   DARK MODE (AUTO)
 ========================= */
 
 @media (prefers-color-scheme: dark) {
+
   .page-header {
-    background: #1e293b;
-    box-shadow: none;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255,255,255,0.05);
   }
 
   .page-title {
@@ -81,10 +147,33 @@ TITLE
   }
 
   .back-btn {
-    background: linear-gradient(145deg, #334155, #1e293b);
+    background: linear-gradient(145deg, #000000, #000000);
   }
 
   .back-btn svg {
-    color: #f1f5f9;
+    color: #e2e8f0;
+  }
+
+  .back-btn:hover {
+    background: linear-gradient(135deg, #4f46e5, #4338ca);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+  .page-header {
+    padding: 14px 16px;
+  }
+
+  .page-title {
+    font-size: 18px;
+  }
+
+  .back-btn {
+    width: 36px;
+    height: 36px;
   }
 }

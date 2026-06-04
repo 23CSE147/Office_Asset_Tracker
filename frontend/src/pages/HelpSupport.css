@@ -1,0 +1,97 @@
+/* =========================
+   PAGE
+========================= */
+
+.help-page {
+
+  min-height: 100vh;
+
+  padding: 60px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eef2ff,
+      #f8fafc
+    );
+
+  font-family: "Poppins", sans-serif;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.help-card {
+
+  max-width: 900px;
+
+  margin: auto;
+
+  background: white;
+
+  border-radius: 28px;
+
+  padding: 45px;
+
+  box-shadow:
+    0 25px 50px rgba(0,0,0,.08);
+}
+
+/* TITLE */
+
+.help-card h2 {
+
+  text-align: center;
+
+  color: #111827;
+
+  font-size: 34px;
+
+  margin-bottom: 30px;
+}
+
+/* FAQ */
+
+.help-item {
+
+  padding: 20px;
+
+  border-radius: 18px;
+
+  background: #f8fafc;
+
+  margin-bottom: 18px;
+
+  transition: .3s;
+}
+
+.help-item:hover {
+
+  transform:
+    translateY(-3px);
+
+  background: #eef2ff;
+}
+
+/* QUESTION */
+
+.help-item h3 {
+
+  color: #4f46e5;
+
+  margin-bottom: 10px;
+
+  font-size: 18px;
+}
+
+/* ANSWER */
+
+.help-item p {
+
+  color: #475569;
+
+  line-height: 1.7;
+
+  font-size: 14px;
+}

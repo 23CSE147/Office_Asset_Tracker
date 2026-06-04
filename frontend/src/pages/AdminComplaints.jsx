@@ -1,93 +1,10 @@
-// import { useEffect, useState } from "react";
-// import axios from "axios";
-
-// function AdminComplaints() {
-
-//   const [complaints, setComplaints] = useState([]);
-
-//   const token = localStorage.getItem("token");
-
-//   // GET ALL COMPLAINTS
-//   const fetchComplaints = async () => {
-//     try {
-//       const res = await axios.get(
-//         "http://localhost:5000/api/complaints",
-//         {
-//           headers: {
-//             Authorization: `Bearer ${token}`
-//           }
-//         }
-//       );
-
-//       setComplaints(res.data);
-
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchComplaints();
-//   }, []);
-
-//   // 🔥 UPDATE STATUS
-//   const updateStatus = async (id, status) => {
-//     try {
-
-//       await axios.put(
-//         `http://localhost:5000/api/complaints/${id}`,
-//         { status },
-//         {
-//           headers: {
-//             Authorization: `Bearer ${token}`
-//           }
-//         }
-//       );
-
-//       alert("Status Updated");
-
-//       fetchComplaints();
-
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-
-//   return (
-
-//     <div style={{ padding: "20px" }}>
-
-//       <h2>Admin Complaint Panel</h2>
-
-//       {complaints.map(c => (
-
-//         <div key={c._id} style={{ marginBottom: "10px" }}>
-
-//           <p><b>Asset:</b> {c.asset?.assetName}</p>
-//           <p><b>Description:</b> {c.description}</p>
-
-//           <select
-//             value={c.status}
-//             onChange={(e) => updateStatus(c._id, e.target.value)}
-//           >
-//             <option>Pending</option>
-//             <option>In Progress</option>
-//             <option>Resolved</option>
-//           </select>
-
-//         </div>
-
-//       ))}
-
-//     </div>
-//   );
-// }
-
-// export default AdminComplaints;
-
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./adminComplaints.css";
+
+// ✅ toast only
+import { toast } from "react-toastify";
+import PageHeader from "../components/PageHeader";
 
 function AdminComplaints() {
   const [complaints, setComplaints] = useState([]);
@@ -109,6 +26,9 @@ function AdminComplaints() {
       setFiltered(res.data || []);
     } catch (err) {
       console.log(err);
+
+      // ❌ ERROR TOAST
+      toast.error("Failed to load complaints ❌");
     } finally {
       setLoading(false);
     }
@@ -129,9 +49,15 @@ function AdminComplaints() {
         },
       );
 
+      // ✅ SUCCESS TOAST
+      toast.success("Status updated successfully ✅");
+
       fetchComplaints();
     } catch (err) {
       console.log(err);
+
+      // ❌ ERROR TOAST
+      toast.error("Failed to update status ❌");
     }
   };
 
@@ -147,9 +73,14 @@ function AdminComplaints() {
   return (
     <div className="admin-container">
       {/* HEADER */}
-      <div className="admin-header">
-        <h2>Complaint Management</h2>
-        <button onClick={fetchComplaints}>Refresh</button>
+      {/* ================= HEADER ================= */}
+
+      <div className="page-header-section-admin">
+        <PageHeader title="Complaint Management" />
+
+        <button className="refresh-btn-admin" onClick={fetchComplaints}>
+          Refresh
+        </button>
       </div>
 
       {/* SUMMARY */}
@@ -204,10 +135,13 @@ function AdminComplaints() {
               <span>{c.asset?.assetName}</span>
 
               <span className="desc">{c.description}</span>
+
               <select
                 value={c.status}
                 onChange={(e) => updateStatus(c._id, e.target.value)}
-                className={`status-select ${c.status.toLowerCase().replace(" ", "-")}`}
+                className={`status-select ${c.status
+                  .toLowerCase()
+                  .replace(" ", "-")}`}
               >
                 <option>Pending</option>
                 <option>In Progress</option>

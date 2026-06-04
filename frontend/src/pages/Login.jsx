@@ -92,11 +92,6 @@
 
 // export default Login;
 
-
-
-
-
-
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
@@ -158,13 +153,31 @@ function Login() {
       });
 
       // SAVE USER DATA
+      // SAVE USER DATA
+
       const { token, user } = res.data;
 
       localStorage.setItem("token", token);
+
       localStorage.setItem("role", user.role);
+
       localStorage.setItem("userName", user.name);
+
       localStorage.setItem("userId", user.id);
 
+      localStorage.setItem("email", user.email);
+
+      /* =========================
+   PROFILE IMAGE
+========================= */
+
+      localStorage.setItem(
+        "profileImage",
+
+        user.profileImage
+          ? `http://localhost:5000/uploads/${user.profileImage}`
+          : "https://i.pravatar.cc/150",
+      );
       Toast.fire({
         icon: "success",
         title: "Login Successful",
@@ -191,7 +204,7 @@ function Login() {
       <form className="login-card" onSubmit={handleLogin}>
         <h2>Welcome Back</h2>
 
-        <p className="subtitle">Sign in to manage office assets</p>
+        <p className="subtitle-l">Sign in to manage office assets</p>
 
         {/* EMAIL */}
 

@@ -30,7 +30,6 @@
 
 // module.exports = mongoose.model("Complaint", complaintSchema);
 
-
 const mongoose = require("mongoose");
 
 const complaintSchema = new mongoose.Schema(
@@ -49,13 +48,17 @@ const complaintSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    image: {
+      type: String,
+      required: true,
+    },
     status: {
       type: String,
       enum: ["Pending", "In Progress", "Resolved"],
       default: "Pending",
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 module.exports = mongoose.model("Complaint", complaintSchema);

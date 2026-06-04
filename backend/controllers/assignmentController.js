@@ -229,14 +229,15 @@ exports.getAssignments = async (req, res) => {
   }
 };
 
-// ======================
-// RETURN ASSET
-// ======================
 // exports.returnAsset = async (req, res) => {
 //   try {
-//     const assign = await Assignment.findById(req.params.id)
-//       .populate("asset")
-//       .populate("employee");
+//     const userId = req.user.id; // 🔥 logged-in user
+
+//     const assign = await Assignment.findOne({
+//       _id: req.params.id,
+//       employee: userId, // 🔥 ensure user owns asset
+//       returned: false,
+//     }).populate("asset");
 
 //     if (!assign) {
 //       return res.status(404).json({
@@ -244,38 +245,21 @@ exports.getAssignments = async (req, res) => {
 //       });
 //     }
 
+//     // update assignment
 //     assign.returnDate = new Date();
 //     assign.returned = true;
 //     await assign.save();
 
+//     // update asset
 //     await Asset.findByIdAndUpdate(assign.asset._id, {
 //       status: "Available",
 //     });
-
-//     // 🔔 NOTIFICATION (NO DUPLICATE + FIX TYPE)
-//     const admins = await User.find({ role: "admin" });
-
-//     for (const admin of admins) {
-//       const exists = await Notification.findOne({
-//         userId: admin._id,
-//         assetId: assign.asset._id,
-//         type: "return",
-//       });
-
-//       if (!exists) {
-//         await Notification.create({
-//           userId: admin._id,
-//           assetId: assign.asset._id,
-//           message: `${assign.employee.name} has returned ${assign.asset.assetName}`,
-//           type: "return",
-//         });
-//       }
-//     }
 
 //     res.json({
 //       message: "Returned Successfully",
 //     });
 //   } catch (error) {
+//     console.log(error);
 //     res.status(500).json({
 //       message: "Return Failed",
 //     });
@@ -284,13 +268,16 @@ exports.getAssignments = async (req, res) => {
 
 exports.returnAsset = async (req, res) => {
   try {
-    const userId = req.user.id; // 🔥 logged-in user
+
+    const userId = req.user.id;
 
     const assign = await Assignment.findOne({
       _id: req.params.id,
-      employee: userId, // 🔥 ensure user owns asset
+      employee: userId,
       returned: false,
-    }).populate("asset");
+    })
+    .populate("asset")
+    .populate("employee");
 
     if (!assign) {
       return res.status(404).json({
@@ -298,23 +285,62 @@ exports.returnAsset = async (req, res) => {
       });
     }
 
-    // update assignment
+    // ======================
+    // UPDATE ASSIGNMENT
+    // ======================
+
     assign.returnDate = new Date();
     assign.returned = true;
+
     await assign.save();
 
-    // update asset
+    // ======================
+    // UPDATE ASSET STATUS
+    // ======================
+
     await Asset.findByIdAndUpdate(assign.asset._id, {
       status: "Available",
+    });
+
+    // ======================
+    // 🔔 NOTIFY ADMINS
+    // ======================
+
+    const admins = await User.find({
+      role: "admin",
+    });
+
+    const notifications = admins.map((admin) => ({
+      userId: admin._id,
+      assetId: assign.asset._id,
+      message: `${assign.employee.name} returned asset "${assign.asset.assetName}"`,
+      type: "return",
+    }));
+
+    await Notification.insertMany(notifications);
+
+    // ======================
+    // 🔔 OPTIONAL USER NOTIFICATION
+    // ======================
+
+    await Notification.create({
+      userId: userId,
+      assetId: assign.asset._id,
+      message: `You returned asset "${assign.asset.assetName}" successfully`,
+      type: "return",
     });
 
     res.json({
       message: "Returned Successfully",
     });
+
   } catch (error) {
+
     console.log(error);
+
     res.status(500).json({
       message: "Return Failed",
     });
+
   }
 };

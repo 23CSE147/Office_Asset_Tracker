@@ -1,6 +1,4 @@
-/* ======================
-GLOBAL WRAPPER
-====================== */
+/* 
 
 .assign-form-wrapper {
   min-height: 100vh;
@@ -13,9 +11,7 @@ GLOBAL WRAPPER
 }
 
 
-/* ======================
-CARD (GLASS STYLE)
-====================== */
+
 
 .assign-form-card {
   width: 420px;
@@ -37,9 +33,7 @@ CARD (GLASS STYLE)
 }
 
 
-/* ======================
-TITLE
-====================== */
+
 
 .assign-form-card h2 {
   text-align: center;
@@ -50,9 +44,7 @@ TITLE
 }
 
 
-/* ======================
-SELECT INPUT
-====================== */
+
 
 .assign-form-card select {
   padding: 14px;
@@ -79,9 +71,7 @@ SELECT INPUT
 }
 
 
-/* ======================
-BUTTON
-====================== */
+
 
 .assign-form-card button {
   padding: 14px;
@@ -101,7 +91,7 @@ BUTTON
 }
 
 
-/* HOVER */
+
 
 .assign-form-card button:hover {
   transform: translateY(-3px);
@@ -109,7 +99,7 @@ BUTTON
 }
 
 
-/* DISABLED */
+
 
 .assign-form-card button:disabled {
   background: #c7d2fe;
@@ -119,9 +109,6 @@ BUTTON
 }
 
 
-/* ======================
-SMALL LABEL (BONUS)
-====================== */
 
 .assign-form-card label {
   font-size: 13px;
@@ -130,9 +117,7 @@ SMALL LABEL (BONUS)
 }
 
 
-/* ======================
-ANIMATION
-====================== */
+
 
 @keyframes fadeIn {
   from {
@@ -147,13 +132,371 @@ ANIMATION
 }
 
 
-/* ======================
-RESPONSIVE
-====================== */
-
 @media (max-width: 500px) {
   .assign-form-card {
     width: 90%;
     padding: 25px;
   }
+}  */
+/* PAGE */
+/* PAGE */
+
+.assign-page {
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eef2ff 0%,
+      #f8fafc 50%,
+      #eff6ff 100%
+    );
+
+  padding: 35px;
+}
+
+/* PAGE HEADER TOP LEFT */
+
+.assign-page .page-header {
+  margin-bottom: 30px;
+}
+
+/* CARD CENTER */
+
+.assign-card {
+  width: 100%;
+  max-width: 620px;
+
+  margin: 0 auto;
+
+  background: rgba(255,255,255,0.95);
+
+  backdrop-filter: blur(10px);
+
+  padding: 38px;
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 20px 60px rgba(79,70,229,0.12),
+    0 8px 24px rgba(0,0,0,0.06);
+
+  border: 1px solid rgba(255,255,255,0.6);
+}
+.assign-header {
+  margin-bottom: 28px;
+}
+
+.assign-header h2 {
+  font-size: 34px;
+  font-weight: 700;
+  color: #111827;
+
+  margin-bottom: 8px;
+}
+
+.assign-header p {
+  color: #6b7280;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* INPUT BOX */
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 22px;
+}
+
+.input-box label {
+  margin-bottom: 10px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  color: #374151;
+}
+
+/* SELECT */
+
+.input-box select {
+  width: 100%;
+
+  padding: 15px 18px;
+
+  border-radius: 14px;
+
+  border: 1.5px solid #d1d5db;
+
+  background: white;
+
+  font-size: 15px;
+  color: #111827;
+
+  outline: none;
+
+  transition: 0.3s;
+}
+
+.input-box select:hover {
+  border-color: #a5b4fc;
+}
+
+.input-box select:focus {
+  border-color: #4f46e5;
+
+  box-shadow:
+    0 0 0 4px rgba(79,70,229,0.12);
+}
+
+/* PREVIEW */
+
+.preview-box {
+  margin-top: 10px;
+  margin-bottom: 28px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8fafc,
+      #eef2ff
+    );
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 18px;
+
+  padding: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 18px;
+}
+
+/* PREVIEW ITEM */
+
+.preview-item {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ICON */
+
+.preview-item svg {
+  width: 52px;
+  height: 52px;
+
+  padding: 14px;
+
+  border-radius: 14px;
+
+  background: #4f46e5;
+  color: white;
+
+  box-shadow:
+    0 8px 20px rgba(79,70,229,0.25);
+}
+
+/* TEXT */
+
+.preview-item h4 {
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  color: #111827;
+}
+
+.preview-item p {
+  margin-top: 4px;
+
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* ARROW */
+
+.arrow {
+  font-size: 24px;
+  color: #9ca3af;
+}
+
+/* BUTTON */
+
+.assign-card button {
+  width: 100%;
+
+  padding: 16px;
+
+  border: none;
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #4f46e5
+    );
+
+  color: white;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  transition: 0.3s;
+}
+
+/* BUTTON HOVER */
+
+.assign-card button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 24px rgba(79,70,229,0.28);
+}
+
+/* DISABLED */
+
+.assign-card button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp {
+
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+  .assign-page {
+    padding: 20px;
+  }
+
+  .assign-card {
+    padding: 25px;
+  }
+
+  .assign-header h2 {
+    font-size: 28px;
+  }
+
+  .preview-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .arrow {
+    transform: rotate(90deg);
+    align-self: center;
+  }
+
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  margin-bottom: 30px;
+}
+
+.back-btn {
+  width: 44px;
+  height: 44px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    #4f46e5,
+    #312e81
+  );
+
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  font-size: 16px;
+
+  box-shadow:
+    0 10px 25px rgba(79, 70, 229, 0.25);
+
+  transition: 0.3s ease;
+}
+
+.back-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 15px 30px rgba(79, 70, 229, 0.35);
+}
+
+.back-btn:active {
+  transform: scale(0.96);
+}
+
+.page-title {
+  font-size: 30px;
+  font-weight: 700;
+
+  color: #3730a3;
+
+  margin: 0;
+
+  letter-spacing: 0.3px;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .page-header {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .back-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
 }

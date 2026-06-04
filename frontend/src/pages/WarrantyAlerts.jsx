@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import Sidebar from "../components/Sidebar";
-
+import PageHeader from "../components/PageHeader";
+import { FaShieldAlt } from "react-icons/fa";
+import { FaSyncAlt } from "react-icons/fa";
 import "./warrantyalerts.css";
 
 function WarrantyAlerts() {
@@ -42,12 +44,29 @@ function WarrantyAlerts() {
       <Sidebar />
 
       <div className="warranty-main">
-        <h2>Warranty Expiry Alerts</h2>
+        {/* =========================
+            PAGE HEADER
+        ========================== */}
+
+        <div className="page-header-section-warranty">
+          <div className="warranty-header-left">
+            <PageHeader title="Warranty Alerts" />
+
+            <button className="refresh-btn" onClick={fetchAlerts}>
+              <FaSyncAlt className="refresh-icon" />
+              Refresh
+            </button>
+          </div>
+        </div>
+        {/* =========================
+            ALERT GRID
+        ========================== */}
 
         {alerts.length > 0 ? (
           <div className="alert-grid">
             {alerts.map((asset) => {
               const expiry = new Date(asset.warrantyExpiry);
+
               const today = new Date();
 
               const daysLeft = Math.ceil(
@@ -58,9 +77,14 @@ function WarrantyAlerts() {
                 <div className="alert-card" key={asset._id}>
                   <h3>{asset.assetName}</h3>
 
-                  <p>Category : {asset.category}</p>
+                  <p>
+                    <strong>Category :</strong> {asset.category}
+                  </p>
 
-                  <p>Warranty Expiry :{expiry.toLocaleDateString()}</p>
+                  <p>
+                    <strong>Warranty Expiry :</strong>{" "}
+                    {expiry.toLocaleDateString()}
+                  </p>
 
                   <div
                     className={`badge ${daysLeft <= 7 ? "danger" : "warning"}`}
@@ -73,7 +97,7 @@ function WarrantyAlerts() {
           </div>
         ) : (
           <div className="no-alert">
-            <h3>✅ No Warranty Expiring Soon</h3>
+            <h3>No Warranty Expiring Soon</h3>
           </div>
         )}
       </div>

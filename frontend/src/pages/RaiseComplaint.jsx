@@ -1,137 +1,19 @@
-// import { useEffect, useState } from "react";
-// import axios from "axios";
-// import "./raisecomplaint.css";
-
-// function RaiseComplaint() {
-//   const [assets, setAssets] = useState([]);
-//   const [assetId, setAssetId] = useState("");
-//   const [description, setDescription] = useState("");
-//   const [loading, setLoading] = useState(false);
-
-//   const token = localStorage.getItem("token");
-//   useEffect(() => {
-//     if (!token) {
-//       console.log("No token found");
-//       return;
-//     }
-
-//     const fetchAssets = async () => {
-//       try {
-//         const res = await axios.get(
-//           "http://localhost:5000/api/assets/my-assets",
-//           {
-//             headers: {
-//               Authorization: `Bearer ${token}`,
-//             },
-//           },
-//         );
-
-//         console.log("Assets Response:", res.data); // 🔥 DEBUG
-
-//         setAssets(Array.isArray(res.data) ? res.data : []);
-//       } catch (err) {
-//         console.log(
-//           "Error fetching assets:",
-//           err.response?.data || err.message,
-//         );
-//       }
-//     };
-
-//     fetchAssets();
-//   }, [token]);
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     if (!assetId || !description) {
-//       alert("Fill all fields");
-//       return;
-//     }
-
-//     try {
-//       setLoading(true);
-
-//       await axios.post(
-//         "http://localhost:5000/api/complaints",
-//         { assetId, description },
-//         {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//         },
-//       );
-
-//       alert("Complaint submitted");
-
-//       setAssetId("");
-//       setDescription("");
-//     } catch (err) {
-//       alert("Error");
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   return (
-//     <div className="complaint-wrapper">
-//       <form className="complaint-card" onSubmit={handleSubmit}>
-//         <h2>Raise Complaint</h2>
-//         <label>Select Asset</label>
-//         <select value={assetId} onChange={(e) => setAssetId(e.target.value)}>
-//           <option value="">Choose Asset</option>
-
-//           {assets.length > 0 ? (
-//             assets.map((a) => (
-//               <option key={a._id} value={a._id}>
-//                 {a.assetName} 
-//               </option>
-//             ))
-//           ) : (
-//             <option disabled>No assets assigned</option>
-//           )}
-//         </select>
-  
-//         <label>Description</label>
-//         <textarea
-//           value={description}
-//           onChange={(e) => setDescription(e.target.value)}
-//           placeholder="Enter issue..."
-//         />
-//         <button type="submit">
-//           {loading ? "Submitting..." : "Submit Complaint"}
-//         </button>
-//       </form>
-//     </div>
-//   );
-// }
-
-// export default RaiseComplaint;
-
-
-
-
-
-
-
-
-
-
-
-
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./raisecomplaint.css";
+import { toast } from "react-toastify";
+import PageHeader from "../components/PageHeader";
 
 function RaiseComplaint() {
-
   const [assets, setAssets] = useState([]);
   const [assetId, setAssetId] = useState("");
   const [description, setDescription] = useState("");
+  const [priority, setPriority] = useState("Medium"); // 🔥 NEW
+  const [image, setImage] = useState(null); // 🔥 NEW
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
 
   const token = localStorage.getItem("token");
 
-  // FETCH ASSETS
   useEffect(() => {
     if (!token) return;
 
@@ -141,73 +23,74 @@ function RaiseComplaint() {
           "http://localhost:5000/api/assets/my-assets",
           {
             headers: { Authorization: `Bearer ${token}` },
-          }
+          },
         );
 
         setAssets(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
-        console.log(err);
+        toast.error("Failed to load assets ❌");
       }
     };
 
     fetchAssets();
   }, [token]);
 
-  // SELECTED ASSET DETAILS
-  const selectedAsset = assets.find(a => a._id === assetId);
+  const selectedAsset = assets.find((a) => a._id === assetId);
 
-  // SUBMIT
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!assetId || !description) {
-      setMessage("Please fill all fields");
+    if (!assetId || !description || !image) {
+      toast.warning("All fields including proof image are required ⚠️");
+      return;
+    }
+
+    if (description.length < 10) {
+      toast.warning("Description must be at least 10 characters");
       return;
     }
 
     try {
       setLoading(true);
 
-      await axios.post(
-        "http://localhost:5000/api/complaints",
-        { assetId, description },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const formData = new FormData();
+      formData.append("assetId", assetId);
+      formData.append("description", description);
+      formData.append("priority", priority);
 
-      setMessage("✅ Complaint submitted successfully");
+      if (image) {
+        formData.append("image", image);
+      }
+
+      await axios.post("http://localhost:5000/api/complaints", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      toast.success("Complaint submitted successfully ✅");
 
       setAssetId("");
       setDescription("");
-
+      setPriority("Medium");
+      setImage(null);
     } catch (err) {
-      setMessage("❌ Failed to submit complaint");
+      toast.error("Failed to submit complaint ❌");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-
     <div className="complaint-wrapper">
-
+      <div className="complaint-header">
+        <PageHeader title="Raise Complaint" />
+      </div>
       <form className="complaint-card" onSubmit={handleSubmit}>
-
-        <h2>Raise Complaint</h2>
-
-        {/* MESSAGE */}
-        {message && <div className="message">{message}</div>}
-
-        {/* SELECT ASSET */}
+        {/* ASSET */}
         <label>Select Asset</label>
-
-        <select
-          value={assetId}
-          onChange={(e) => setAssetId(e.target.value)}
-        >
+        <select value={assetId} onChange={(e) => setAssetId(e.target.value)}>
           <option value="">Choose Asset</option>
-
           {assets.map((a) => (
             <option key={a._id} value={a._id}>
               {a.assetName}
@@ -215,18 +98,31 @@ function RaiseComplaint() {
           ))}
         </select>
 
-        {/* ASSET DETAILS */}
+        {/* ASSET INFO */}
         {selectedAsset && (
           <div className="asset-info">
-            <p><b>Name:</b> {selectedAsset.assetName}</p>
-            <p><b>Category:</b> {selectedAsset.category || "N/A"}</p>
-            <p><b>Status:</b> {selectedAsset.status || "Active"}</p>
+            <p>
+              <b>Name:</b> {selectedAsset.assetName}
+            </p>
+            <p>
+              <b>Category:</b> {selectedAsset.category || "N/A"}
+            </p>
+            <p>
+              <b>Status:</b> {selectedAsset.status || "Active"}
+            </p>
           </div>
         )}
 
+        {/* PRIORITY */}
+        <label>Priority</label>
+        <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+
         {/* DESCRIPTION */}
         <label>Description</label>
-
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
@@ -234,17 +130,22 @@ function RaiseComplaint() {
           maxLength={200}
         />
 
-        <div className="char-count">
-          {description.length}/200 characters
-        </div>
+        <div className="char-count">{description.length}/200 characters</div>
+
+        {/* IMAGE */}
+        <label>Upload Image</label>
+        <input
+          type="file"
+          accept="image/*"
+          required
+          onChange={(e) => setImage(e.target.files[0])}
+        />
 
         {/* BUTTON */}
         <button type="submit" disabled={loading}>
           {loading ? "Submitting..." : "Submit Complaint"}
         </button>
-
       </form>
-
     </div>
   );
 }

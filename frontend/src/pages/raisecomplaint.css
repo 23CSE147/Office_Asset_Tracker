@@ -1,87 +1,930 @@
+/* =====================================
+   PAGE BACKGROUND
+===================================== */
+
 .complaint-wrapper {
+
   min-height: 100vh;
+
   display: flex;
+
   justify-content: center;
+
   align-items: center;
-  background: linear-gradient(135deg, #4f46e5, #0ea5e9);
+
+  padding: 40px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4338ca,
+      #312e81,
+      #1e1b4b
+    );
+
+  position: relative;
+
+  overflow: hidden;
+
+  font-family: "Poppins", sans-serif;
+
 }
 
-/* CARD */
+/* =====================================
+   BACKGROUND GLOW
+===================================== */
+
+.complaint-wrapper::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 520px;
+  height: 520px;
+
+  background: rgba(255,255,255,.08);
+
+  border-radius: 50%;
+
+  top: -220px;
+  left: -220px;
+
+  filter: blur(120px);
+
+}
+
+.complaint-wrapper::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  background: rgba(255,255,255,.08);
+
+  border-radius: 50%;
+
+  bottom: -180px;
+  right: -180px;
+
+  filter: blur(120px);
+
+}
+
+/* =====================================
+   CARD
+===================================== */
 
 .complaint-card {
-  width: 420px;
-  background: white;
-  padding: 30px;
-  border-radius: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+
+  width: 500px;
+
+  max-width: 95%;
+
+  padding: 42px;
+
+  border-radius: 28px;
+
+  background:
+    rgba(255,255,255,.14);
+
+  backdrop-filter: blur(20px);
+
+  -webkit-backdrop-filter: blur(20px);
+
+  border:
+    1px solid rgba(255,255,255,.2);
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.35);
+
+  position: relative;
+
+  z-index: 2;
+
+  animation: fadeUp .5s ease;
+
 }
+
+/* =====================================
+   TITLE
+===================================== */
 
 .complaint-card h2 {
+
   text-align: center;
+
+  color: white;
+
+  font-size: 30px;
+
+  font-weight: 700;
+
+  margin-bottom: 30px;
+
+  letter-spacing: .5px;
+
 }
 
-/* INPUT */
+/* =====================================
+   LABEL
+===================================== */
+
+.complaint-card label {
+
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: rgba(255,255,255,.92);
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+}
+
+/* =====================================
+   INPUTS
+===================================== */
 
 .complaint-card select,
-.complaint-card textarea {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  outline: none;
-}
+.complaint-card textarea,
+.complaint-card input[type="file"] {
 
-.complaint-card textarea {
-  height: 100px;
-  resize: none;
-}
+  width: 100%;
 
-/* MESSAGE */
+  padding: 14px 16px;
 
-.message {
-  padding: 10px;
-  border-radius: 6px;
-  background: #f3f4f6;
-  text-align: center;
+  margin-bottom: 18px;
+
+  border-radius: 16px;
+
+  border:
+    1px solid rgba(255,255,255,.2);
+
+  background:
+    rgba(255,255,255,.95);
+
+  color: #111827;
+
   font-size: 14px;
+
+  outline: none;
+
+  transition: .3s ease;
+
 }
 
-/* ASSET INFO */
+/* =====================================
+   FOCUS
+===================================== */
+
+.complaint-card select:focus,
+.complaint-card textarea:focus {
+
+  border-color: #818cf8;
+
+  box-shadow:
+    0 0 0 4px rgba(129,140,248,.22);
+
+  transform: translateY(-1px);
+
+}
+
+/* =====================================
+   TEXTAREA
+===================================== */
+
+.complaint-card textarea {
+
+  min-height: 130px;
+
+  resize: none;
+
+  line-height: 1.6;
+
+}
+
+/* =====================================
+   FILE INPUT
+===================================== */
+
+.complaint-card input[type="file"] {
+
+  padding: 12px;
+
+  cursor: pointer;
+
+  background:
+    rgba(255,255,255,.92);
+
+}
+
+/* =====================================
+   ASSET INFO
+===================================== */
 
 .asset-info {
-  background: #f9fafb;
-  padding: 10px;
-  border-radius: 8px;
-  font-size: 14px;
+
+  padding: 16px;
+
+  margin-bottom: 18px;
+
+  border-radius: 18px;
+
+  background:
+    rgba(255,255,255,.18);
+
+  border:
+    1px solid rgba(255,255,255,.15);
+
+  color: white;
+
+  backdrop-filter: blur(10px);
+
 }
 
-/* CHAR COUNT */
+.asset-info p {
+
+  margin: 8px 0;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+}
+
+/* =====================================
+   CHARACTER COUNT
+===================================== */
 
 .char-count {
+
   text-align: right;
+
+  margin-top: -10px;
+
+  margin-bottom: 14px;
+
+  color: rgba(255,255,255,.75);
+
   font-size: 12px;
-  color: gray;
+
 }
 
-/* BUTTON */
+/* =====================================
+   BUTTON
+===================================== */
 
 .complaint-card button {
-  padding: 12px;
-  border-radius: 8px;
+
+  width: 100%;
+
+  padding: 16px;
+
+  margin-top: 8px;
+
   border: none;
-  background: #4f46e5;
-  color: white;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #e0e7ff
+    );
+
+  color: #4338ca;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  letter-spacing: .4px;
+
   cursor: pointer;
-  font-weight: 600;
+
+  transition: .3s ease;
+
+  box-shadow:
+    0 12px 25px rgba(0,0,0,.18);
+
 }
+
+/* HOVER */
 
 .complaint-card button:hover {
-  background: #4338ca;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 18px 35px rgba(0,0,0,.25);
+
 }
 
+/* ACTIVE */
+
+.complaint-card button:active {
+
+  transform: scale(.98);
+
+}
+
+/* DISABLED */
+
 .complaint-card button:disabled {
-  opacity: 0.6;
+
+  opacity: .7;
+
   cursor: not-allowed;
+
+}
+
+/* =====================================
+   ANIMATION
+===================================== */
+
+@keyframes fadeUp {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(25px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+  }
+
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media(max-width:600px){
+
+  .complaint-wrapper {
+
+    padding: 20px;
+
+  }
+
+  .complaint-card {
+
+    padding: 30px 22px;
+
+    border-radius: 22px;
+
+  }
+
+  .complaint-card h2 {
+
+    font-size: 24px;
+
+  }
+
+}
+
+/* =====================================
+   PAGE HEADER
+===================================== */
+
+.complaint-header {
+
+  position: absolute;
+
+  top: 35px;
+
+  left: 40px;
+
+  z-index: 10;
+
+}
+
+/* HEADER CONTAINER */
+
+.complaint-header .page-header {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 14px 25px;
+  border-radius: 24px;
+
+  background:
+    rgba(255,255,255,.18);
+
+  backdrop-filter: blur(18px);
+
+  -webkit-backdrop-filter: blur(18px);
+
+  border:
+    1px solid rgba(255,255,255,.18);
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.18);
+
+}
+
+/* TITLE */
+
+.complaint-header .page-title {
+
+  color: white;
+
+  font-size: 30px;
+
+  font-weight: 700;
+
+  margin: 0;
+
+  letter-spacing: .5px;
+
+}
+
+/* BACK BUTTON */
+
+.complaint-header .back-btn {
+
+  width: 52px;
+
+  height: 52px;
+
+  border: none;
+
+  border-radius: 25px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4f46e5,
+      #312e81
+    );
+
+  color: white;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  cursor: pointer;
+
+  font-size: 18px;
+
+  transition: .3s ease;
+
+  box-shadow:
+    0 10px 25px rgba(79,70,229,.35);
+
+}
+
+/* HOVER */
+
+.complaint-header .back-btn:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 18px 35px rgba(79,70,229,.45);
+
+}
+
+
+/* =====================================
+   PREMIUM MOBILE RESPONSIVE
+===================================== */
+
+@media (max-width: 768px) {
+
+  .complaint-wrapper {
+
+    padding: 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-start;
+
+    align-items: stretch;
+  }
+
+  /* HEADER */
+
+  .complaint-header {
+
+    position: relative;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    margin-bottom: 20px;
+  }
+
+  .complaint-header .page-header {
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border-radius: 18px;
+
+    gap: 12px;
+  }
+
+  .complaint-header .page-title {
+
+    font-size: 20px;
+
+    line-height: 1.2;
+  }
+
+  .complaint-header .back-btn {
+
+    width: 44px;
+
+    height: 44px;
+
+    min-width: 44px;
+
+    border-radius: 14px;
+
+    font-size: 15px;
+  }
+
+  /* CARD */
+
+  .complaint-card {
+
+    width: 100%;
+
+    max-width: 100%;
+
+    padding: 24px 18px;
+
+    border-radius: 22px;
+  }
+
+  /* INPUTS */
+
+  .complaint-card select,
+  .complaint-card textarea,
+  .complaint-card input[type="file"] {
+
+    padding: 13px 14px;
+
+    font-size: 14px;
+
+    border-radius: 14px;
+  }
+
+  /* TEXTAREA */
+
+  .complaint-card textarea {
+
+    min-height: 110px;
+  }
+
+  /* BUTTON */
+
+  .complaint-card button {
+
+    height: 52px;
+
+    border-radius: 16px;
+
+    font-size: 14px;
+  }
+
+  /* ASSET INFO */
+
+  .asset-info {
+
+    padding: 14px;
+
+    border-radius: 16px;
+  }
+
+  .asset-info p {
+
+    font-size: 13px;
+  }
+}
+
+/* =====================================
+   EXTRA SMALL DEVICES
+===================================== */
+
+@media (max-width: 480px) {
+
+  .complaint-wrapper {
+
+    padding: 14px;
+  }
+
+  .complaint-header .page-title {
+
+    font-size: 18px;
+  }
+
+  .complaint-card {
+
+    padding: 20px 16px;
+  }
+
+  .complaint-card label {
+
+    font-size: 13px;
+  }
+
+  .complaint-card button {
+
+    height: 48px;
+
+    font-size: 13px;
+  }
+
+  .char-count {
+
+    font-size: 11px;
+  }
+}
+/* =====================================
+   LARGE LAPTOPS
+===================================== */
+
+@media (max-width: 1400px) {
+
+  .complaint-card {
+
+    width: 440px;
+  }
+}
+
+/* =====================================
+   TABLETS
+===================================== */
+
+@media (max-width: 1024px) {
+
+  .complaint-wrapper {
+
+    padding: 30px 20px;
+  }
+
+  .complaint-card {
+
+    width: 420px;
+
+    padding: 40px 35px;
+  }
+
+  .complaint-card h2 {
+
+    font-size: 26px;
+  }
+}
+
+/* =====================================
+   MOBILE DEVICES
+===================================== */
+
+@media (max-width: 768px) {
+
+  .complaint-wrapper {
+
+    min-height: auto;
+
+    padding: 20px 16px;
+
+    align-items: flex-start;
+  }
+
+  /* HEADER */
+
+  .complaint-header {
+
+    width: 100%;
+
+    margin-bottom: 20px;
+  }
+
+  .complaint-header .page-header {
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border-radius: 18px;
+  }
+
+  .complaint-header .page-title {
+
+    font-size: 20px;
+  }
+
+  /* CARD */
+
+  .complaint-card {
+
+    width: 100%;
+
+    max-width: 100%;
+
+    padding: 28px 20px;
+
+    border-radius: 22px;
+
+    gap: 12px;
+  }
+
+  .complaint-card h2 {
+
+    font-size: 24px;
+
+    margin-bottom: 10px;
+  }
+
+  /* LABEL */
+
+  .complaint-card label {
+
+    font-size: 13px;
+  }
+
+  /* INPUTS */
+
+  .complaint-card select,
+  .complaint-card textarea,
+  .complaint-card input[type="file"] {
+
+    padding: 13px 14px;
+
+    font-size: 14px;
+
+    border-radius: 14px;
+  }
+
+  .complaint-card textarea {
+
+    min-height: 110px;
+  }
+
+  /* ASSET INFO */
+
+  .asset-info {
+
+    padding: 14px;
+
+    border-radius: 16px;
+  }
+
+  .asset-info p {
+
+    font-size: 13px;
+  }
+
+  /* BUTTON */
+
+  .complaint-card button {
+
+    height: 50px;
+
+    font-size: 14px;
+
+    border-radius: 14px;
+  }
+
+  /* CHAR COUNT */
+
+  .char-count {
+
+    font-size: 11px;
+  }
+}
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media (max-width: 480px) {
+
+  .complaint-wrapper {
+
+    padding: 14px;
+  }
+
+  .complaint-header .page-header {
+
+    padding: 12px 14px;
+  }
+
+  .complaint-header .page-title {
+
+    font-size: 18px;
+  }
+
+  .complaint-card {
+
+    padding: 22px 16px;
+
+    border-radius: 20px;
+  }
+
+  .complaint-card h2 {
+
+    font-size: 22px;
+  }
+
+  .complaint-card label {
+
+    font-size: 12px;
+  }
+
+  .complaint-card select,
+  .complaint-card textarea,
+  .complaint-card input[type="file"] {
+
+    padding: 12px;
+
+    font-size: 13px;
+  }
+
+  .complaint-card textarea {
+
+    min-height: 100px;
+  }
+
+  .asset-info {
+
+    padding: 12px;
+  }
+
+  .asset-info p {
+
+    font-size: 12px;
+  }
+
+  .complaint-card button {
+
+    height: 46px;
+
+    font-size: 13px;
+  }
+}
+
+/* =====================================
+   EXTRA SMALL DEVICES
+===================================== */
+
+@media (max-width: 360px) {
+
+  .complaint-header .page-title {
+
+    font-size: 16px;
+  }
+
+  .complaint-card {
+
+    padding: 18px 14px;
+  }
+
+  .complaint-card h2 {
+
+    font-size: 20px;
+  }
+
+  .complaint-card select,
+  .complaint-card textarea {
+
+    font-size: 12px;
+  }
+
+  .complaint-card button {
+
+    height: 42px;
+
+    font-size: 12px;
+  }
 }

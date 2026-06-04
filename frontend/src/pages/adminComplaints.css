@@ -50,7 +50,7 @@
   border-radius: 12px;
   color: white;
   text-align: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   transition: 0.2s;
 }
 
@@ -62,10 +62,21 @@
   font-size: 22px;
 }
 
-.card.total { background: #6366f1; }
-.card.pending { background: #f59e0b; }
-.card.progress { background: #3b82f6; }
-.card.resolved { background: #10b981; }
+.card.total {
+  background: #6366f1;
+}
+
+.card.pending {
+  background: #f59e0b;
+}
+
+.card.progress {
+  background: #3b82f6;
+}
+
+.card.resolved {
+  background: #10b981;
+}
 
 /* ================= FILTER ================= */
 
@@ -87,7 +98,7 @@
   background: white;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
 }
 
 /* HEADER */
@@ -146,6 +157,7 @@
   margin-top: 20px;
   color: #666;
 }
+
 .status-select.pending {
   background: #fef3c7;
 }
@@ -157,6 +169,7 @@
 .status-select.resolved {
   background: #dcfce7;
 }
+
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 768px) {
@@ -169,6 +182,338 @@
 
   .admin-cards {
     grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+
+/* =========================
+REFRESH BUTTON TOP RIGHT
+========================= */
+
+.refresh-btn-admin {
+
+  position: absolute;
+
+  top: 40px;
+  right: 50px;
+
+  height: 46px;
+
+  padding: 10px 22px;
+
+  border: none;
+  border-radius: 18px;
+
+  background:
+    linear-gradient(135deg,
+      #4f46e5,
+      #6366f1);
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .3s ease;
+
+  box-shadow:
+    0 10px 25px rgba(79, 70, 229, .18);
+
+}
+
+.refresh-btn-admin:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 15px 30px rgba(79, 70, 229, .28);
+
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px) {
+
+  .page-header-section-admin {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 18px;
+
+  }
+
+  .refresh-btn-admin {
+
+    width: 100%;
+
+  }
+
+}
+
+/* ================= CARD TEXT ================= */
+
+.card p {
+
+  color: black;
+
+  font-weight: 500;
+  font-size: 15px;
+}
+
+/* ===============================
+   TABLE WRAPPER
+================================ */
+
+.admin-table {
+
+  background: white;
+
+  border-radius: 22px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, .08);
+
+  border:
+    1px solid #eef2f7;
+
+}
+
+/* ===============================
+   TABLE HEADER
+================================ */
+
+.table-head {
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr 2fr 1fr;
+
+  align-items: center;
+
+  padding: 18px 22px;
+
+  background:
+    linear-gradient(135deg,
+      #4f46e5,
+      #4338ca);
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  letter-spacing: .3px;
+
+}
+
+/* ===============================
+   TABLE ROW
+================================ */
+
+.table-row {
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr 2fr 1fr;
+
+  align-items: center;
+
+  padding: 12px 22px;
+
+  border-bottom:
+    1px solid #eef2f7;
+
+  transition: all .25s ease;
+
+  background: white;
+
+}
+
+/* LAST ROW */
+
+.table-row:last-child {
+
+  border-bottom: none;
+
+}
+
+/* HOVER */
+
+.table-row:hover {
+
+  background: #f8faff;
+
+  transform: scale(1.003);
+
+}
+
+/* ===============================
+   TABLE TEXT
+================================ */
+
+.table-row span {
+
+  color: #111827;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+}
+
+/* DESCRIPTION */
+
+.desc {
+
+  color: #6b7280 !important;
+
+  line-height: 1.6;
+
+  font-size: 15px !important;
+
+  max-width: 95%;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+/* ===============================
+   STATUS SELECT
+================================ */
+
+.status-select {
+
+  width: 170px;
+
+  padding: 10px 14px;
+
+  border-radius: 12px;
+
+  border: none;
+
+  outline: none;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .3s ease;
+
+}
+
+/* HOVER */
+
+.status-select:hover {
+
+  transform: translateY(-1px);
+
+}
+
+/* PENDING */
+
+.status-select.pending {
+
+  background: #fef3c7;
+
+  color: #92400e;
+
+}
+
+/* IN PROGRESS */
+
+.status-select.in-progress {
+
+  background: #dbeafe;
+
+  color: #1d4ed8;
+
+}
+
+/* RESOLVED */
+
+.status-select.resolved {
+
+  background: #dcfce7;
+
+  color: #15803d;
+
+}
+
+/* ===============================
+   EMPTY STATE
+================================ */
+
+.no-data {
+
+  padding: 60px 20px;
+
+  text-align: center;
+
+  color: #6b7280;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+}
+
+/* ===============================
+   LOADING
+================================ */
+
+.loading {
+
+  padding: 40px;
+
+  text-align: center;
+
+  color: #4f46e5;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media(max-width:900px) {
+
+  .table-head {
+
+    display: none;
+
+  }
+
+  .table-row {
+
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+
+    padding: 18px;
+
+  }
+
+  .status-select {
+
+    width: 100%;
+
   }
 
 }

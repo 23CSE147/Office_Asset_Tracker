@@ -104,7 +104,8 @@ require("dotenv").config();
 const path = require("path");
 
 const connectDB = require("./config/db");
-
+const userRoutes =
+  require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
 const assetRoutes = require("./routes/assetRoutes");
 const assignmentRoutes = require("./routes/assignmentRoutes");
@@ -163,6 +164,7 @@ app.use("/api", notificationRoutes); // notification API
 app.use("/api/assets", assetRoutes);
 app.use("/api/assignments", assignmentRoutes);
 app.use("/api/complaints", complaintRoutes);
+app.use("/api/users", userRoutes);
 /*
 =====================
 404
