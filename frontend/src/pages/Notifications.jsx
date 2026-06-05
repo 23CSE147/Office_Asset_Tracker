@@ -20,7 +20,7 @@ function Notifications() {
 
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/notifications/${userId}`,
+        `${import.meta.env.VITE_API_URL}/api/notifications/${userId}`,
       );
 
       setNotifications(res.data);
@@ -39,7 +39,7 @@ function Notifications() {
     if (!n.isRead) {
       try {
         await axios.put(
-          `http://localhost:5000/api/notifications/read/${n._id}`,
+          `${import.meta.env.VITE_API_URL}/api/notifications/read/${n._id}`,
         );
 
         fetchNotifications();
@@ -55,7 +55,7 @@ function Notifications() {
 
   const deleteNotification = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/notifications/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/notifications/${id}`);
 
       fetchNotifications();
     } catch (error) {

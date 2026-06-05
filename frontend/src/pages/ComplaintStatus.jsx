@@ -16,7 +16,7 @@ function ComplaintStatus() {
     try {
       setLoading(true);
 
-      const res = await axios.get("http://localhost:5000/api/complaints/my", {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/complaints/my`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -210,7 +210,7 @@ function ComplaintStatus() {
                   <span>Proof</span>
 
                   <img
-                    src={`http://localhost:5000/uploads/${selected.image}`}
+                    src={`${import.meta.env.VITE_API_URL}/uploads/${selected.image}`}
                     alt="complaint"
                     className="complaint-image"
                   />

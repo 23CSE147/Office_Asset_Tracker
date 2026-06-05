@@ -193,6 +193,9 @@ exports.login = async (req, res) => {
 
     );
 
+    user.lastLoginAt = new Date();
+    await user.save();
+
     /* =========================
        RESPONSE
     ========================= */
@@ -213,6 +216,31 @@ exports.login = async (req, res) => {
 
         profileImage:
           user.profileImage,
+
+        phone: user.phone,
+
+        employeeId: user.employeeId,
+
+        department: user.department,
+
+        designation: user.designation,
+
+        address: user.address,
+
+        bio: user.bio,
+
+        language: user.language,
+
+        theme: user.theme,
+
+        emailNotifications:
+          user.emailNotifications,
+
+        systemNotifications:
+          user.systemNotifications,
+
+        lastLoginAt:
+          user.lastLoginAt,
 
       },
 

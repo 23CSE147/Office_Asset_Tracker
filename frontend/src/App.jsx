@@ -21,6 +21,7 @@ import ChangePassword from "./pages/ChangePassword";
 import HelpSupport from "./pages/HelpSupport";
 import AuditLogs from "./pages/AuditLogs";
 import WarrantyAlerts from "./pages/WarrantyAlerts";
+import Settings from "./pages/Settings";
 
 /* ================= COMPONENTS ================= */
 
@@ -146,6 +147,42 @@ function App() {
         />
         <Route path="/notifications" element={<Notifications />} />
 
+        <Route
+          path="/settings"
+          element={
+            <ProtectedRoute>
+              <Settings />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/edit-profile"
+          element={
+            <ProtectedRoute>
+              <EditProfile />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/change-password"
+          element={
+            <ProtectedRoute>
+              <ChangePassword />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/help-support"
+          element={
+            <ProtectedRoute>
+              <HelpSupport />
+            </ProtectedRoute>
+          }
+        />
+
         {/* ================= 404 PAGE ================= */}
 
         <Route
@@ -156,11 +193,6 @@ function App() {
             </div>
           }
         />
-        <Route path="/edit-profile" element={<EditProfile />} />
-
-        <Route path="/change-password" element={<ChangePassword />} />
-
-        <Route path="/help-support" element={<HelpSupport />} />
       </Routes>
     </Router>
   );

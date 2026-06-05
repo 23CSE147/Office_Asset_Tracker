@@ -201,6 +201,7 @@
   height: 48px;
 
   border-radius: 50%;
+  border: none;
 
   background: linear-gradient(
     135deg,

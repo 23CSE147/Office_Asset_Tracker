@@ -23,7 +23,7 @@ function Assignments() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.get("http://localhost:5000/api/assignments", {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/assignments`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -71,7 +71,7 @@ function Assignments() {
       const token = localStorage.getItem("token");
 
       await axios.put(
-        `http://localhost:5000/api/assignments/return/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/assignments/return/${id}`,
         {},
         {
           headers: {
@@ -120,7 +120,7 @@ function Assignments() {
                 <img
                   alt="asset"
                   className="asset-image"
-                  src={`http://localhost:5000/uploads/${assign.asset.image}`}
+                  src={`${import.meta.env.VITE_API_URL}/uploads/${assign.asset.image}`}
                 />
               ) : (
                 <div className="no-image">NO IMAGE</div>

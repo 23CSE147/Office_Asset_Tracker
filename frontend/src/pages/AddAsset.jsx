@@ -46,7 +46,7 @@ function AddAsset() {
       }
 
       await axios.post(
-        "http://localhost:5000/api/assets",
+        `${import.meta.env.VITE_API_URL}/api/assets`,
         formData,
         {
           headers: {

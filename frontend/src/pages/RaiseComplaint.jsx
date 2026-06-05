@@ -20,7 +20,7 @@ function RaiseComplaint() {
     const fetchAssets = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/assets/my-assets",
+          `${import.meta.env.VITE_API_URL}/api/assets/my-assets`,
           {
             headers: { Authorization: `Bearer ${token}` },
           },
@@ -62,7 +62,7 @@ function RaiseComplaint() {
         formData.append("image", image);
       }
 
-      await axios.post("http://localhost:5000/api/complaints", formData, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/complaints`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

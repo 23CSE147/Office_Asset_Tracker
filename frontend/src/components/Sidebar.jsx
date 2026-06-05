@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import {
   FaLaptop,
@@ -9,12 +10,14 @@ import {
   FaHome,
   FaBell,
   FaExclamationTriangle,
+  FaCog,
 } from "react-icons/fa";
 
 import "./sidebar.css";
 
 function Sidebar() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const role = localStorage.getItem("role");
 
   return (
@@ -26,12 +29,12 @@ function Sidebar() {
       <ul>
         <li onClick={() => navigate("/dashboard")}>
           <FaHome />
-          Dashboard
+          {t("nav.dashboard")}
         </li>
 
         <li onClick={() => navigate("/assets")}>
           <FaLaptop />
-          Assets
+          {t("nav.assets")}
         </li>
 
         {/* ADMIN MENU */}
@@ -63,7 +66,7 @@ function Sidebar() {
             </li>
             <li onClick={() => navigate("/admin-complaints")}>
               <FaExclamationTriangle />
-              Complaint
+              {t("nav.complaints")}
             </li>
           </>
         )}
@@ -83,6 +86,11 @@ function Sidebar() {
             </li>
           </>
         )}
+
+        <li onClick={() => navigate("/settings")}>
+          <FaCog />
+          {t("nav.settings")}
+        </li>
       </ul>
     </div>
   );

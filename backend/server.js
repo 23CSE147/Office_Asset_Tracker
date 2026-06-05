@@ -131,7 +131,8 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173",
+    "https://office-asset-tracker.onrender.com"],
     credentials: true,
   })
 );
@@ -160,11 +161,11 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
 app.use("/api", notificationRoutes); // notification API
 app.use("/api/assets", assetRoutes);
 app.use("/api/assignments", assignmentRoutes);
 app.use("/api/complaints", complaintRoutes);
-app.use("/api/users", userRoutes);
 /*
 =====================
 404

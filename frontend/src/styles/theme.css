@@ -1,0 +1,103 @@
+:root {
+  --app-bg: #f5f7fb;
+  --surface: #ffffff;
+  --surface-soft: #f8fafc;
+  --surface-glass: rgba(255, 255, 255, 0.74);
+  --text: #111827;
+  --text-muted: #6b7280;
+  --border: #e5e7eb;
+  --primary: #4f46e5;
+  --primary-strong: #312e81;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+}
+
+:root[data-theme="dark"] {
+  --app-bg: #0f172a;
+  --surface: #111827;
+  --surface-soft: #1f2937;
+  --surface-glass: rgba(17, 24, 39, 0.78);
+  --text: #f8fafc;
+  --text-muted: #cbd5e1;
+  --border: rgba(148, 163, 184, 0.24);
+  --primary: #818cf8;
+  --primary-strong: #a5b4fc;
+  --danger: #fb7185;
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --shadow: 0 24px 55px rgba(0, 0, 0, 0.34);
+}
+
+body {
+  background: var(--app-bg);
+  color: var(--text);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.dark-mode .dashboard-main,
+.dark-mode .settings-page,
+.dark-mode .profile-page,
+.dark-mode .password-page {
+  background: var(--app-bg);
+  color: var(--text);
+}
+
+.dark-mode .dashboard-card,
+.dark-mode .settings-panel,
+.dark-mode .settings-hero,
+.dark-mode .profile-card,
+.dark-mode .password-card,
+.dark-mode .password-rules,
+.dark-mode .asset-card,
+.dark-mode .complaint-card,
+.dark-mode .notification-card,
+.dark-mode .modal,
+.dark-mode .card {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.dark-mode table,
+.dark-mode thead,
+.dark-mode tbody,
+.dark-mode tr,
+.dark-mode td,
+.dark-mode th {
+  background-color: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.dark-mode .dashboard-header,
+.dark-mode .page-header,
+.dark-mode .asset-header,
+.dark-mode .table-container,
+.dark-mode .form-card {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select {
+  background: var(--surface-soft);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.dark-mode input::placeholder,
+.dark-mode textarea::placeholder {
+  color: #94a3b8;
+}
+
+.dark-mode .sidebar {
+  background: linear-gradient(180deg, #111827, #020617);
+}
+
+.dark-mode .navbar {
+  background: rgba(15, 23, 42, 0.94);
+}

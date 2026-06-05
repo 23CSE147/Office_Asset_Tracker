@@ -17,7 +17,8 @@
 
 
 import { Navigate } from "react-router-dom";
-import checkToken from "../../../backend/utils/checkToken";
+import checkToken from "../utils/checkToken";
+
 
 
 function ProtectedRoute({ children }) {

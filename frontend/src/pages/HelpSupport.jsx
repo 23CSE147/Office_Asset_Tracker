@@ -1,109 +1,92 @@
 import "./HelpSupport.css";
 
+import {
+  FaQuestionCircle,
+  FaLaptop,
+  FaTools,
+  FaUndo,
+  FaLock,
+  FaEnvelope,
+  FaPhoneAlt,
+  FaHeadset,
+} from "react-icons/fa";
+
 function HelpSupport() {
-
   return (
-
     <div className="help-page">
 
       <div className="help-card">
 
-        <h2>Help & Support</h2>
-
-        {/* FAQ 1 */}
-
-        <div className="help-item">
-
-          <h3>
-            How to add new asset?
-          </h3>
-
+        <div className="help-header">
+          <FaHeadset className="help-main-icon" />
+          <h2>Help & Support Center</h2>
           <p>
-
-            Go to dashboard → Add Asset page
-            and fill the asset details form.
-
+            Find answers to common questions and get support quickly.
           </p>
-
         </div>
 
-        {/* FAQ 2 */}
-
         <div className="help-item">
-
           <h3>
-            How to raise complaint?
+            <FaLaptop /> How to add a new asset?
           </h3>
-
           <p>
-
-            Open Raise Complaint page,
-            select asset and submit issue details.
-
+            Navigate to Dashboard → Add Asset and fill in all required asset details.
           </p>
-
         </div>
 
-        {/* FAQ 3 */}
-
         <div className="help-item">
-
           <h3>
-            How to return asset?
+            <FaTools /> How to raise a complaint?
           </h3>
-
           <p>
-
-            Open My Assets page and click
-            Return button for assigned asset.
-
+            Open Raise Complaint, select an asset, describe the issue and submit.
           </p>
-
         </div>
 
-        {/* FAQ 4 */}
-
         <div className="help-item">
-
           <h3>
-            Forgot password?
+            <FaUndo /> How to return an asset?
           </h3>
-
           <p>
-
-            Use Change Password page or
-            contact administrator support.
-
+            Go to My Assets and click the Return button for the assigned asset.
           </p>
-
         </div>
 
-        {/* CONTACT */}
+        <div className="help-item">
+          <h3>
+            <FaLock /> Forgot password?
+          </h3>
+          <p>
+            Use the Change Password option or contact your administrator.
+          </p>
+        </div>
 
         <div className="help-item">
-
           <h3>
+            <FaQuestionCircle /> Complaint status not updating?
+          </h3>
+          <p>
+            Refresh the Complaint Status page or contact support for assistance.
+          </p>
+        </div>
+
+        <div className="support-box">
+          <h3>Contact Support</h3>
+
+          <div className="support-info">
+            <p><FaEnvelope /> support@assettrack.com</p>
+            <p><FaPhoneAlt /> +91 98765 43210</p>
+          </div>
+
+          <button className="support-btn">
             Contact Support
-          </h3>
-
-          <p>
-
-            📧 support@assettrack.com
-
-            <br />
-
-            📞 +91 9876543210
-
-          </p>
-
+          </button>
         </div>
 
       </div>
 
     </div>
-
   );
-
 }
 
 export default HelpSupport;

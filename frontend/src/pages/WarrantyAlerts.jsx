@@ -21,7 +21,7 @@ function WarrantyAlerts() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5000/api/assets/warranty-alerts",
+        `${import.meta.env.VITE_API_URL}/api/assets/warranty-alerts`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

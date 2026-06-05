@@ -18,7 +18,7 @@ function AdminComplaints() {
     try {
       setLoading(true);
 
-      const res = await axios.get("http://localhost:5000/api/complaints", {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/complaints`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -42,7 +42,7 @@ function AdminComplaints() {
   const updateStatus = async (id, status) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/complaints/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/complaints/${id}`,
         { status },
         {
           headers: { Authorization: `Bearer ${token}` },

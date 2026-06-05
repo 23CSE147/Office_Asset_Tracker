@@ -24,6 +24,52 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    phone: {
+      type: String,
+      default: "",
+    },
+    employeeId: {
+      type: String,
+      default: "",
+    },
+    department: {
+      type: String,
+      default: "",
+    },
+    designation: {
+      type: String,
+      default: "",
+    },
+    address: {
+      type: String,
+      default: "",
+    },
+    bio: {
+      type: String,
+      default: "",
+    },
+    language: {
+      type: String,
+      enum: ["en", "ta", "hi"],
+      default: "en",
+    },
+    theme: {
+      type: String,
+      enum: ["light", "dark"],
+      default: "light",
+    },
+    emailNotifications: {
+      type: Boolean,
+      default: true,
+    },
+    systemNotifications: {
+      type: Boolean,
+      default: true,
+    },
+    lastLoginAt: {
+      type: Date,
+      default: null,
+    },
   },
   { timestamps: true },
 );

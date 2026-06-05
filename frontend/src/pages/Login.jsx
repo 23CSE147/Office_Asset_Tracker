@@ -1,97 +1,3 @@
-// import { useState } from "react";
-// import axios from "axios";
-// import { useNavigate, Link } from "react-router-dom";
-// import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
-// import "./login.css";
-
-// function Login() {
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [showPassword, setShowPassword] = useState(false);
-//   const [loading, setLoading] = useState(false);
-
-//   const navigate = useNavigate();
-
-//   const handleLogin = async (e) => {
-//     e.preventDefault();
-//     setLoading(true);
-
-//     try {
-//       const res = await axios.post(
-//         "http://localhost:5000/api/auth/login",
-//         { email, password }
-//       );
-
-//       localStorage.setItem("token", res.data.token);
-//       localStorage.setItem("role", res.data.user.role);
-//       localStorage.setItem("userName", res.data.user.name);
-
-//       navigate("/dashboard");
-//     } catch (error) {
-//       alert("Invalid Email or Password");
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   return (
-//     <div className="login-wrapper">
-
-//       {/* Background Shapes */}
-//       <div className="bg-shape shape1"></div>
-//       <div className="bg-shape shape2"></div>
-
-//       <form className="login-card" onSubmit={handleLogin}>
-//         <h2>Welcome Back</h2>
-//         <p className="subtitle">
-//           Sign in to manage your office assets
-//         </p>
-
-//         {/* Email */}
-//         <div className="input-group">
-//           <FaEnvelope className="input-icon" />
-//           <input
-//             type="email"
-//             placeholder="Email Address"
-//             value={email}
-//             onChange={(e) => setEmail(e.target.value)}
-//             required
-//           />
-//         </div>
-
-//         {/* Password */}
-//         <div className="input-group">
-//           <FaLock className="input-icon" />
-//           <input
-//             type={showPassword ? "text" : "password"}
-//             placeholder="Password"
-//             value={password}
-//             onChange={(e) => setPassword(e.target.value)}
-//             required
-//           />
-//           <span
-//             className="toggle-password"
-//             onClick={() => setShowPassword(!showPassword)}
-//           >
-//             {showPassword ? <FaEyeSlash /> : <FaEye />}
-//           </span>
-//         </div>
-
-//         <button type="submit" className="login-btn" disabled={loading}>
-//           {loading ? "Signing In..." : "Sign In"}
-//         </button>
-
-//         <p className="register-link">
-//           Don’t have an account?
-//           <Link to="/register"> Register</Link>
-//         </p>
-//       </form>
-//     </div>
-//   );
-// }
-
-// export default Login;
-
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
@@ -147,7 +53,7 @@ function Login() {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
         email,
         password,
       });
@@ -167,6 +73,15 @@ function Login() {
 
       localStorage.setItem("email", user.email);
 
+      if (user.language) {
+        localStorage.setItem("language", user.language);
+      }
+
+      if (user.theme) {
+        localStorage.setItem("theme", user.theme);
+        localStorage.setItem("darkMode", user.theme === "dark");
+      }
+
       /* =========================
    PROFILE IMAGE
 ========================= */
@@ -175,7 +90,7 @@ function Login() {
         "profileImage",
 
         user.profileImage
-          ? `http://localhost:5000/uploads/${user.profileImage}`
+          ? `${import.meta.env.VITE_API_URL}/uploads/${user.profileImage}`
           : "https://i.pravatar.cc/150",
       );
       Toast.fire({

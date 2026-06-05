@@ -41,7 +41,7 @@ function Dashboard() {
 
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/notifications/${userId}`,
+        `${import.meta.env.VITE_API_URL}/api/notifications/${userId}`,
       );
 
       setNotifications(res.data);

@@ -453,68 +453,68 @@ exports.getMyAssets = async (req, res) => {
   }
 };
 
-const returnAsset = async (assetId) => {
-  if (!window.confirm("Return this asset?")) return;
+// const returnAsset = async (assetId) => {
+//   if (!window.confirm("Return this asset?")) return;
 
-  try {
-    const token = localStorage.getItem("token");
+//   try {
+//     const token = localStorage.getItem("token");
 
-    // 🔥 get ONLY user assignments
-    const res = await axios.get("http://localhost:5000/api/assignments", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+//     // 🔥 get ONLY user assignments
+//     const res = await axios.get("http://localhost:5000/api/assignments", {
+//       headers: { Authorization: `Bearer ${token}` },
+//     });
 
-    // find correct assignment
-    const assignment = res.data.find(
-      (a) =>
-        a.asset && // ✅ prevent null crash
-        a.asset._id === assetId &&
-        !a.returned,
-    );
-    console.log(res.data);
-    if (!assignment) {
-      alert("Assignment not found");
-      return;
-    }
+//     // find correct assignment
+//     const assignment = res.data.find(
+//       (a) =>
+//         a.asset && // ✅ prevent null crash
+//         a.asset._id === assetId &&
+//         !a.returned,
+//     );
+//     console.log(res.data);
+//     if (!assignment) {
+//       alert("Assignment not found");
+//       return;
+//     }
 
-    // 🔥 return using assignment id
-    await axios.put(
-      `http://localhost:5000/api/assignments/return/${assignment._id}`,
-      {},
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      },
-    );
+//     // 🔥 return using assignment id
+//     await axios.put(
+//       `http://localhost:5000/api/assignments/return/${assignment._id}`,
+//       {},
+//       {
+//         headers: { Authorization: `Bearer ${token}` },
+//       },
+//     );
 
-    alert("Returned Successfully");
+//     alert("Returned Successfully");
 
-    // 🔥 refresh
-    fetchAssets();
-  } catch (error) {
-    console.log(error);
-    alert("Return Failed");
-  }
-};
-exports.updateAsset = async (req, res) => {
-  try {
+//     // 🔥 refresh
+//     fetchAssets();
+//   } catch (error) {
+//     console.log(error);
+//     alert("Return Failed");
+//   }
+//  };
+// exports.updateAsset = async (req, res) => {
+//   try {
 
-    const updateData = {
-      ...req.body,
-    };
+//     const updateData = {
+//       ...req.body,
+//     };
 
-    if (req.file) {
-      updateData.image = req.file.filename;
-    }
+//     if (req.file) {
+//       updateData.image = req.file.filename;
+//     }
 
-    const updated = await Asset.findByIdAndUpdate(
-      req.params.id,
-      updateData,
-      { new: true }
-    );
+//     const updated = await Asset.findByIdAndUpdate(
+//       req.params.id,
+//       updateData,
+//       { new: true }
+//     );
 
-    res.json(updated);
+//     res.json(updated);
 
-  } catch (error) {
-    res.status(500).json({ message: "Update failed" });
-  }
-};
+//   } catch (error) {
+//     res.status(500).json({ message: "Update failed" });
+//   }
+// };
